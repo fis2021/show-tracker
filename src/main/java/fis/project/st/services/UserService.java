@@ -1,5 +1,7 @@
 package fis.project.st.services;
 
+import fis.project.st.exceptions.NotExistingAccountException;
+import fis.project.st.exceptions.WrongPasswordException;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import fis.project.st.exceptions.UsernameAlreadyExistsException;
@@ -33,6 +35,22 @@ public class UserService {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
+        }
+    }
+
+    public static void checkCredentials(String username, String password) throws WrongPasswordException, NotExistingAccountException {
+        int username_found = 0;
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                username_found = 1;
+                String user_pass_entered = encodePassword(username, password); //encrypt argument password
+                if(!user_pass_entered.equals(user.getPassword())) {
+                    throw new WrongPasswordException(username);
+                }
+            }
+        }
+        if(username_found == 0){
+            throw new NotExistingAccountException(username);
         }
     }
 
