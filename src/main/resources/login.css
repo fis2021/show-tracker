@@ -1,0 +1,78 @@
+@font-face {
+    src: url("./fonts/Pacifico-Regular.ttf");
+}
+
+@font-face {
+    src: url("./fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    src: url("./fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+    src: url("./fonts/Satisfy-Regular.ttf");
+}
+
+* {
+    default-primary-color: #202024;
+    secondary-color: #00AFB5;
+}
+
+.root {
+    -fx-background-color: default-primary-color;
+    -fx-background-image: url("images/bg-wave.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: bottom;
+}
+
+.logo-title {
+    -fx-font: 42px "Satisfy";
+    -fx-alignment: center;
+    -fx-fill: #F6AE2D;
+}
+
+.underline {
+    -fx-border-radius: 150;
+    -fx-fill: secondary-color;
+}
+
+.button {
+    -fx-background-color: #F6AE2D;
+    -fx-alignment: center;
+    -fx-background-radius: 8;
+    -fx-font: 13 "Roboto";
+    -fx-text-fill: #F1F7ED;
+    -fx-pref-width: 100;
+    -fx-pref-height: 30;
+}
+
+.button .text {
+    -fx-effect: dropshadow(one-pass-box, rgba(12, 8, 11, 0.1), 1, 0, 1, 1);
+    -fx-font-weight: bolder;
+    -fx-font-family: Roboto, bold;
+}
+
+.secBtn {
+    -fx-background-color: secondary-color;
+}
+
+.text-field {
+    -fx-background-radius: 20;
+    -fx-background-color: #F1F7ED;
+    -fx-alignment: center;
+    -fx-pref-height: 25;
+    -fx-pref-width: 200;
+}
+
+.password-field {
+    -fx-background-radius: 20;
+    -fx-background-color: #F1F7ED;
+    -fx-alignment: center;
+    -fx-pref-height: 25;
+    -fx-pref-width: 200;
+}
+
+.msg {
+    -fx-fill: #F1F7ED;
+}
