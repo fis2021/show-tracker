@@ -2,14 +2,7 @@ package fis.project.st.exceptions;
 
 public class UsernameAlreadyExistsException extends Exception {
 
-    private String username;
-
-    public UsernameAlreadyExistsException(String username) {
-        super(String.format("An account with the username %s already exists!", username));
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return username;
+    public UsernameAlreadyExistsException() {
+        super("An account with this username already exists!");
     }
 }

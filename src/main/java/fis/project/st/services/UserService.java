@@ -34,7 +34,7 @@ public class UserService {
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
-                throw new UsernameAlreadyExistsException(username);
+                throw new UsernameAlreadyExistsException();
         }
     }
 
@@ -45,12 +45,12 @@ public class UserService {
                 username_found = 1;
                 String user_pass_entered = encodePassword(username, password); //encrypt argument password
                 if(!user_pass_entered.equals(user.getPassword())) {
-                    throw new WrongPasswordException(username);
+                    throw new WrongPasswordException();
                 }
             }
         }
         if(username_found == 0){
-            throw new NotExistingAccountException(username);
+            throw new NotExistingAccountException();
         }
     }
 
