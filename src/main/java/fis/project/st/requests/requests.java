@@ -93,7 +93,7 @@ public class requests {
         return show;
     }
 
-    public static String getData(String partUrl) {
+    public String getData(String partUrl) {
         final String key = "52be3e7fef4340778b2a9b84547e29db";
         final String baseURL = "https://api.themoviedb.org/3";
 

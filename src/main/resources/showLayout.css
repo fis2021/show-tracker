@@ -1,0 +1,35 @@
+@font-face {
+    src: url("./fonts/Roboto-Bold.ttf");
+}
+
+.root {
+    -fx-pref-height: 220px;
+    -fx-pref-width: 120px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-page-information-alignment: center;
+}
+
+.info {
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+.poster {
+    -fx-alignment: center;
+    -fx-padding: 10px 0 0 0;
+}
+
+.title {
+    -fx-font-family: Roboto bold;
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+    -fx-padding: 5px 0 0 0;
+}
+
+.line {
+    -fx-fill: #F6AE2D;
+}
+.vote {
+    -fx-alignment: center;
+}
