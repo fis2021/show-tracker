@@ -10,8 +10,8 @@ public class Movie extends Show {
     private int runtime;
     private boolean video;
 
-    public Movie(int id, String poster_path, String backdrop_path, String overview, float vote_average, ArrayList<Genre> genres, String status, String name, String release_date, int runtime, boolean video) {
-        super(id, poster_path, backdrop_path, overview, vote_average, genres, status, name);
+    public Movie(int id, String poster_path, String backdrop_path, String overview, float vote_average, ArrayList<Genre> genres, String status, String name, String release_date, int runtime, boolean video, String type) {
+        super(id, poster_path, backdrop_path, overview, vote_average, genres, status, name, type);
         this.release_date = release_date;
         this.runtime = runtime;
         this.video = video;

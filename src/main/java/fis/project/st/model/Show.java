@@ -15,8 +15,9 @@ public class Show {
     private ArrayList<Genre> genres;
     private String status;
     private String name;
+    private String type;
 
-    public Show(int id, String poster_path, String backdrop_path, String overview, float vote_average, ArrayList<Genre> genres, String status, String name) {
+    public Show(int id, String poster_path, String backdrop_path, String overview, float vote_average, ArrayList<Genre> genres, String status, String name, String type) {
         this.id = id;
         this.poster_path = poster_path;
         this.backdrop_path = backdrop_path;
@@ -25,6 +26,7 @@ public class Show {
         this.genres = genres;
         this.status = status;
         this.name = name;
+        this.type = type;
     }
 
     public int getId() {
@@ -57,6 +59,10 @@ public class Show {
 
     public String getName() {
         return name;
+    }
+
+    public String getType() {
+        return type;
     }
 
     @Override

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.MoviePageController">
+    <children>
+        <fx:include source="navBar.fxml" />
+      <Text fx:id="title" layoutX="505.0" layoutY="195.0" styleClass="title" textOrigin="CENTER" />
+      <Text fx:id="overview" layoutX="189.0" layoutY="352.0" styleClass="overview" />
+      <ImageView fx:id="showBackdrop" fitHeight="150.0" fitWidth="266.9" layoutX="189.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox layoutX="463.0" layoutY="168.0" prefHeight="56.0" prefWidth="42.0" styleClass="vote">
+         <children>
+            <Text fx:id="vote_average" styleClass="text" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="4.0" styleClass="separator" width="23.0" />
+            <Text styleClass="text" text="10" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_LEFT" layoutX="471.0" layoutY="238.0" prefHeight="16.0" prefWidth="200.0" >
+         <children>
+            <Label styleClass="label" text="Release Date: " />
+            <Text fx:id="release_date" styleClass="text" textOrigin="CENTER" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="471.0" layoutY="260.0" prefHeight="20.0" prefWidth="250.0" >
+         <children>
+            <Label styleClass="label" text="Runtime: " />
+            <Text fx:id="runtime" styleClass="text" textOrigin="CENTER" />
+            <Text styleClass="text" text=" minutes" />
+         </children>
+      </HBox>
+    </children>
+   <stylesheets>
+      <URL value="@homepage.css" />
+      <URL value="@showPage.css" />
+   </stylesheets>
+</AnchorPane>

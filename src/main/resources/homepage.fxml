@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -10,37 +8,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.HomepageController">
    <children>
-      <HBox prefHeight="77.0" prefWidth="1280.0" styleClass="nav">
-         <children>
-            <AnchorPane prefHeight="78.0" prefWidth="459.0">
-               <children>
-                  <Text fx:id="username" layoutX="270.0" layoutY="46.0" styleClass="currentUsername" />
-                  <Text layoutX="180.0" layoutY="45.0" styleClass="text" text="Welcome," />
-                  <Group layoutX="16.8046875" layoutY="13.5703125" styleClass="logo">
-                     <children>
-                        <Text layoutX="1.0" layoutY="27.0" styleClass="logo-title" text="Show Tracker" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="7.0" layoutX="27.1953125" layoutY="32.4296875" styleClass="underline" width="67.0" />
-                     </children>
-                  </Group>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="78.0" prefWidth="426.0">
-               <children>
-                  <TextField layoutX="105.0" layoutY="25.0" promptText="Search" styleClass="search-field" />
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="78.0" prefWidth="426.0" />
-         </children>
-      </HBox>
+      <fx:include source="navBar.fxml" />
       <Text layoutX="60.0" layoutY="128.0" styleClass="h1" text="Movies" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="9.0" layoutX="60.0" layoutY="132.0" styleClass="underline" width="116.0" />
-      <ScrollPane layoutX="57.0" layoutY="148.0" prefHeight="244.0" prefWidth="1174.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="57.0" layoutY="148.0" prefHeight="225.0" prefWidth="1161.0" vbarPolicy="NEVER" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="62.0">
          <content>
             <HBox fx:id="gridMovies" prefHeight="0.0" prefWidth="0.0" />
          </content></ScrollPane>
       <Text layoutX="60.0" layoutY="425.0" styleClass="h1" text="TV" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="9.0" layoutX="61.0" layoutY="429.0" styleClass="underline" width="44.0" />
-      <ScrollPane layoutX="57.0" layoutY="445.0" prefHeight="244.0" prefWidth="1173.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="62.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="57.0" layoutY="445.0" prefHeight="225.0" prefWidth="1161.0" vbarPolicy="NEVER" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="62.0">
          <content>
             <HBox fx:id="gridTV" prefHeight="0.0" prefWidth="3.0" />
          </content></ScrollPane>

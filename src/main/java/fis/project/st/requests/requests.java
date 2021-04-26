@@ -28,9 +28,10 @@ public class requests {
             int id = movie.getInt("id");
             String poster_path = movie.getString("poster_path");
             String title = type.equals("movies") ? movie.getString("title") : movie.getString("name");
+            String m_type = type.equals("movies") ? "movie" : "tv";
             String overview = movie.getString("overview");
             float vote_average = movie.getFloat("vote_average");
-            shows.add(new Show(id, poster_path, "", overview, vote_average, null, "", title));
+            shows.add(new Show(id, poster_path, "", overview, vote_average, null, "", title, m_type));
         }
         return shows;
     }
@@ -55,7 +56,7 @@ public class requests {
             String release_date = movie.getString("release_date");
             int runtime = movie.getInt("runtime");
             boolean video = movie.getBoolean("video");
-            show = new Movie(id, poster_path, backdrop_path, overview, vote_average, genres, status, title, release_date, runtime, video);
+            show = new Movie(id, poster_path, backdrop_path, overview, vote_average, genres, status, title, release_date, runtime, video, "movie");
         return show;
     }
 
@@ -89,7 +90,7 @@ public class requests {
             Season season = new Season(season_tmp.getString("air_date"), season_tmp.getInt("episode_count"), season_tmp.getInt("id"), season_tmp.getString("name"), season_tmp.getString("overview"), season_tmp.getString("poster_path"), season_tmp.getInt("season_number"));
             seasons.add(season);
         }
-        show = new TV(id, poster_path, backdrop_path, overview, vote_average, genres, status, title, first_air_date, last_air_date, last_episode_to_air,null, number_of_episodes, number_of_seasons, seasons);
+        show = new TV(id, poster_path, backdrop_path, overview, vote_average, genres, status, title, first_air_date, last_air_date, last_episode_to_air,null, number_of_episodes, number_of_seasons, seasons, "tv");
         return show;
     }
 

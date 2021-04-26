@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="200.0" prefWidth="100.0" stylesheets="@showLayout.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.ShowLayoutController">
+<AnchorPane onMousePressed="#click" prefHeight="200.0" prefWidth="100.0" stylesheets="@showLayout.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.ShowLayoutController">
    <children>
       <ImageView fx:id="showPoster" fitHeight="150.0" fitWidth="100.0" layoutX="9.0" layoutY="1.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
       <VBox layoutY="149.0" prefHeight="71.0" prefWidth="120.0" styleClass="info">
@@ -18,7 +18,7 @@
                </font>
             </Text>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="line" width="42.0" />
-            <Text fx:id="voteAverage" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="vote" text="9.9" textOrigin="CENTER" wrappingWidth="15.939058303833008" />
+            <Text fx:id="voteAverage" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="vote" text="9.9" textOrigin="CENTER" wrappingWidth="17.539064407348633" />
          </children>
       </VBox>
    </children>
