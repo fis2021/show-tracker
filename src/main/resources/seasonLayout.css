@@ -8,6 +8,7 @@
 
 * {
     lightest-color: #ffffff;
+    dark-accent-color: #211E25;
     lighterdark-color: #ada7bc;
     darkest-color: #1B1A20;
     accent-color: #F6AE2D;
@@ -15,40 +16,31 @@
 }
 
 .root {
-    -fx-font-family: Roboto;
-    -fx-background-image: none;
+    -fx-background-color: dark-accent-color;
+    -fx-background-radius: 20;
 }
 
 .title {
-    -fx-font: 36px Roboto, bold;
+    -fx-font-family: Roboto bold;
+    -fx-font-size: 16px;
     -fx-fill: lightest-color;
-
-}
-
-.overview {
-    -fx-font: 14px Roboto;
-    -fx-fill: lighterdark-color;
-}
-
-.separator {
-    -fx-fill: second-accent-color;
-    -fx-background-color: second-accent-color;
 }
 
 .text {
     -fx-fill: lightest-color;
-    -fx-font-size: 16px;
-}
-
-.vote {
-    -fx-alignment: center;
+    -fx-font-size: 14px;
 }
 
 .label .text {
     -fx-fill: lighterdark-color;
 }
 
-.scroll-pane {
-    -fx-background-color: transparent;
-    -fx-background: transparent;
+.title-h1 {
+    -fx-font: 36px Roboto, bold;
+    -fx-fill: lightest-color;
+}
+
+.overview {
+    -fx-font: 14px Roboto;
+    -fx-fill: lighterdark-color;
 }

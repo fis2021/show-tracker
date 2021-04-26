@@ -16,8 +16,8 @@ public class TV extends Show{
     private int number_of_seasons;
     private ArrayList<Season> seasons;
 
-    public TV(int id, String poster_path, String backdrop_path, String overview, float vote_average, ArrayList<Genre> genres, String status, String name, String first_air_date, String last_air_date, Episode last_episode_to_air, Episode next_episode_to_air, int number_of_episodes, int number_of_seasons, ArrayList<Season> seasons) {
-        super(id, poster_path, backdrop_path, overview, vote_average, genres, status, name);
+    public TV(int id, String poster_path, String backdrop_path, String overview, float vote_average, ArrayList<Genre> genres, String status, String name, String first_air_date, String last_air_date, Episode last_episode_to_air, Episode next_episode_to_air, int number_of_episodes, int number_of_seasons, ArrayList<Season> seasons, String type) {
+        super(id, poster_path, backdrop_path, overview, vote_average, genres, status, name, type);
         this.first_air_date = first_air_date;
         this.last_air_date = last_air_date;
         this.last_episode_to_air = last_episode_to_air;

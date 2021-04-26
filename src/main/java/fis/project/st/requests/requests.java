@@ -64,7 +64,7 @@ public class requests {
         Show show;
         JSONObject tv = new JSONObject(responseBody);
         int id = tv.getInt("id");
-        String poster_path = tv.getString("poster_path");
+        String poster_path = tv.isNull("poster_path") ? "" : tv.getString("poster_path");
         String backdrop_path = tv.getString("backdrop_path");
         String overview = tv.getString("overview");
         float vote_average = tv.getFloat("vote_average");
@@ -80,14 +80,14 @@ public class requests {
         String first_air_date = tv.getString("first_air_date");
         String last_air_date = tv.getString("last_air_date");
         JSONObject last_episode = tv.getJSONObject("last_episode_to_air");
-        Episode last_episode_to_air = new Episode(last_episode.getString("air_date"), last_episode.getInt("episode_number"), last_episode.getInt("id"), last_episode.getString("name"), last_episode.getString("overview"), last_episode.getInt("season_number"), last_episode.getString("still_path"));
+        Episode last_episode_to_air = new Episode(last_episode.getString("air_date"), last_episode.getInt("episode_number"), last_episode.getInt("id"), last_episode.getString("name"), last_episode.getString("overview"), last_episode.getInt("season_number"), last_episode.isNull("still_path") ? "" : last_episode.getString("still_path"));
         int number_of_episodes = tv.getInt("number_of_episodes");
         int number_of_seasons = tv.getInt("number_of_seasons");
         JSONArray seasons_arrTmp = tv.getJSONArray("seasons");
         ArrayList<Season> seasons = new ArrayList<>();
         for (int j = 0; j < seasons_arrTmp.length(); j++) {
             JSONObject season_tmp = seasons_arrTmp.getJSONObject(j);
-            Season season = new Season(season_tmp.getString("air_date"), season_tmp.getInt("episode_count"), season_tmp.getInt("id"), season_tmp.getString("name"), season_tmp.getString("overview"), season_tmp.getString("poster_path"), season_tmp.getInt("season_number"));
+            Season season = new Season(season_tmp.getString("air_date"), season_tmp.getInt("episode_count"), season_tmp.getInt("id"), season_tmp.getString("name"), season_tmp.getString("overview"), season_tmp.isNull("poster_path") ? "" : season_tmp.getString("poster_path"), season_tmp.getInt("season_number"));
             seasons.add(season);
         }
         show = new TV(id, poster_path, backdrop_path, overview, vote_average, genres, status, title, first_air_date, last_air_date, last_episode_to_air,null, number_of_episodes, number_of_seasons, seasons, "tv");

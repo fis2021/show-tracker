@@ -28,7 +28,9 @@ public class HomepageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clickListener = show -> selectedShow = getShow(show);
+        clickListener = show -> {
+            selectedShow = getShow(show);
+        };
         try {
             requests reqMovies = new requests();
             String movieResponse = reqMovies.getData("/discover/movie?");
