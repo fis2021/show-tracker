@@ -25,6 +25,9 @@ public class HomepageController implements Initializable {
     public static Show getSelectedShow() {
         return selectedShow;
     }
+    public static void setSelectedShow(Show selectedShow) {
+        HomepageController.selectedShow = selectedShow;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -33,11 +36,11 @@ public class HomepageController implements Initializable {
         };
         try {
             requests reqMovies = new requests();
-            String movieResponse = reqMovies.getData("/discover/movie?");
+            String movieResponse = reqMovies.getData("/discover/movie?", 10);
             ArrayList<Show> movies = reqMovies.getBaseData(movieResponse, "movies");
             createGrid(movies, gridMovies);
             requests reqTV = new requests();
-            String tvResponse = reqTV.getData("/discover/tv?");
+            String tvResponse = reqTV.getData("/discover/tv?", 10);
             ArrayList<Show> tvs = reqTV.getBaseData(tvResponse, "tv");
             createGrid(tvs, gridTV);
         } catch (IOException e) {
@@ -58,15 +61,15 @@ public class HomepageController implements Initializable {
         }
     }
 
-    public Show getShow(Show show) {
+    public static Show getShow(Show show) {
         Show showData;
         if (show.getType().equals("movie")) {
             requests reqMovie = new requests();
-            String movieResponse = reqMovie.getData("/movie/" + show.getId() + "?");
+            String movieResponse = reqMovie.getData("/movie/" + show.getId() + "?", 10);
             showData = reqMovie.getMovieById(movieResponse);
         } else {
             requests reqTv = new requests();
-            String tvResponse = reqTv.getData("/tv/" + show.getId() + "?");
+            String tvResponse = reqTv.getData("/tv/" + show.getId() + "?", 10);
             showData = reqTv.getTVById(tvResponse);
         }
 

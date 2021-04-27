@@ -52,3 +52,13 @@
     -fx-background-color: transparent;
     -fx-background: transparent;
 }
+
+.search-error {
+    -fx-fill: lighterdark-color;
+    -fx-font-size: 36px;
+    -fx-font-family: Roboto bold;
+}
+
+.scroll {
+    -fx-alignment: center;
+}

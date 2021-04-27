@@ -26,12 +26,11 @@ public class requests {
         for (int i = 0; i < movies.length(); i++) {
             JSONObject movie = movies.getJSONObject(i);
             int id = movie.getInt("id");
-            String poster_path = movie.getString("poster_path");
-            String title = type.equals("movies") ? movie.getString("title") : movie.getString("name");
-            String m_type = type.equals("movies") ? "movie" : "tv";
-            String overview = movie.getString("overview");
-            float vote_average = movie.getFloat("vote_average");
-            shows.add(new Show(id, poster_path, "", overview, vote_average, null, "", title, m_type));
+            String poster_path = movie.isNull("poster_path") ? "" : movie.getString("poster_path");;
+            String m_type = movie.isNull("media_type") ? ( type.equals("movies") ? "movie" : "tv") : movie.getString("media_type");
+            String title = m_type.equals("movie") ? movie.getString("title") : movie.getString("name");
+            float vote_average = movie.isNull("vote_average") ? 0 : movie.getFloat("vote_average");
+            shows.add(new Show(id, poster_path, "", "", vote_average, null, "", title, m_type));
         }
         return shows;
     }
@@ -40,8 +39,8 @@ public class requests {
         Show show;
         JSONObject movie = new JSONObject(responseBody);
             int id = movie.getInt("id");
-            String poster_path = movie.getString("poster_path");
-            String backdrop_path = movie.getString("backdrop_path");
+            String poster_path = movie.isNull("poster_path") ? "" : movie.getString("poster_path");
+            String backdrop_path = movie.isNull("backdrop_path") ? "" : movie.getString("backdrop_path");
             String overview = movie.getString("overview");
             float vote_average = movie.getFloat("vote_average");
             JSONArray genres_arrTmp = movie.getJSONArray("genres");
@@ -94,7 +93,7 @@ public class requests {
         return show;
     }
 
-    public String getData(String partUrl) {
+    public String getData(String partUrl, int nrOfImports) {
         final String key = "52be3e7fef4340778b2a9b84547e29db";
         final String baseURL = "https://api.themoviedb.org/3";
 
@@ -108,7 +107,6 @@ public class requests {
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(5000);
             int status = connection.getResponseCode();
-            int nrOfImports = 10;
             if (status > 299) {
                 reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 while ((line = reader.readLine()) != null && nrOfImports != 0) {

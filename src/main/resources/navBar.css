@@ -67,3 +67,11 @@
 .button .text:hover{
     -fx-fill: accent-color;
 }
+
+.search-icon {
+    -fx-fill: lightest-color;
+}
+
+.search-icon:hover {
+    -fx-cursor: hand;
+}
