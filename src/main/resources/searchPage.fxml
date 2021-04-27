@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.SearchController">
+    <children>
+        <fx:include source="navBar.fxml" />
+      <AnchorPane layoutX="-7.0" layoutY="78.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="7.0" layoutY="2.0" prefHeight="627.2" prefWidth="1280.0" styleClass=".scroll">
+               <content>
+                  <GridPane fx:id="searchGrid" alignment="CENTER">
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <Text fx:id="errorMsg" layoutX="499.0" layoutY="144.0" styleClass="search-error" textAlignment="CENTER"  />
+         </children>
+      </AnchorPane>
+    </children>
+    <stylesheets>
+        <URL value="@homepage.css" />
+        <URL value="@showPage.css" />
+    </stylesheets>
+
+</AnchorPane>

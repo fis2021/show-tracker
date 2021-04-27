@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="268.0" prefWidth="830.0" stylesheets="@seasonLayout.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.SeasonLayoutController">
+   <children>
+      <ImageView fx:id="seasonPoster" fitHeight="180.0" fitWidth="120.0" layoutX="17.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="name" layoutX="155.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Season 1" />
+      <HBox alignment="CENTER_LEFT" layoutX="155.0" layoutY="37.0" prefHeight="16.0" prefWidth="200.0" styleClass="detail">
+         <children>
+            <Label styleClass="label" text="Air date: " />
+            <Text fx:id="air_date" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="28-06-2016" textOrigin="CENTER" wrappingWidth="94.06353759765625" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="155.0" layoutY="57.0" prefHeight="16.0" prefWidth="200.0" styleClass="detail">
+         <children>
+            <Label styleClass="label" text="Episode count: " />
+            <Text fx:id="episode_count" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="28-06-2016" textOrigin="CENTER" wrappingWidth="94.06353759765625" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="155.0" layoutY="77.0" prefHeight="16.0" prefWidth="200.0" styleClass="detail">
+         <children>
+            <Label styleClass="label" text="Season number: " />
+            <Text fx:id="season_number" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="28-06-2016" textOrigin="CENTER" wrappingWidth="94.06353759765625" />
+         </children>
+      </HBox>
+      <Text fx:id="overview" layoutX="155.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overview" text="McKinley High School's Glee Club used to be at the top of the show choir world, but years later, it has turned into a haven for misfits and social outcasts. But at McKinley, things for the Glee Club are about to change. Optimistic high school teacher Will Schuester has offered to take on the Herculean task of restoring McKinley's Glee Club to its former glory. Will's only hope lies with two true talents: Rachel Berry, a perfectionist firecracker who is convinced that show choir is her ticket to stardom; and Finn Hudson, the popular high school quarterback who must protect his reputation. Even though everyone around him thinks he's nuts, Will is determined to prove them all wrong and lead the glee club to the greatest competition of them all: Nationals." wrappingWidth="656.5366668701172" />
+   </children>
+</AnchorPane>

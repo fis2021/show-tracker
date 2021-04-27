@@ -1,0 +1,77 @@
+@font-face {
+    src: url("./fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+    src: url("./fonts/Satisfy-Regular.ttf");
+}
+
+* {
+    lightest-color: #F1F7ED;
+    darkest-color: #1B1A20;
+    accent-color: #F6AE2D;
+    second-accent-color: #00AFB5;
+}
+
+.nav {
+    -fx-background-color: darkest-color;
+    -fx-alignment: center;
+}
+
+.logo:hover {
+    -fx-cursor: hand;
+}
+
+.logo-title {
+    -fx-font-family: "Satisfy";
+    -fx-font-size: 24px;
+    -fx-alignment: center;
+    -fx-fill: accent-color;
+}
+
+.underline {
+    -fx-border-radius: 150;
+    -fx-fill: second-accent-color;
+}
+
+.search-field {
+    -fx-background-radius: 20;
+    -fx-background-color: lightest-color;
+    -fx-alignment: center;
+    -fx-pref-height: 25;
+    -fx-pref-width: 200;
+}
+
+.text {
+    -fx-font-family: Roboto bold;
+    -fx-font-size: 18px;
+    -fx-fill: lightest-color;
+}
+
+.currentUsername {
+    -fx-font-family: Roboto bold;
+    -fx-font-size: 18px;
+    -fx-fill: lightest-color;
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-border-style: none;
+    -fx-background-radius: 10px;
+}
+
+.button:hover{
+    -fx-cursor: hand;
+}
+
+.button .text:hover{
+    -fx-fill: accent-color;
+}
+
+.search-icon {
+    -fx-fill: lightest-color;
+}
+
+.search-icon:hover {
+    -fx-cursor: hand;
+}

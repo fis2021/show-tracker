@@ -1,8 +1,4 @@
 @font-face {
-    src: url("./fonts/Pacifico-Regular.ttf");
-}
-
-@font-face {
     src: url("./fonts/Roboto-Regular.ttf");
 }
 
@@ -15,12 +11,14 @@
 }
 
 * {
-    default-primary-color: #202024;
-    secondary-color: #00AFB5;
+    lightest-color: #F1F7ED;
+    darkest-color: #1B1A20;
+    accent-color: #F6AE2D;
+    second-accent-color: #00AFB5;
 }
 
 .root {
-    -fx-background-color: default-primary-color;
+    -fx-background-color: darkest-color;
     -fx-background-image: url("images/bg-wave.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: bottom;
@@ -29,20 +27,20 @@
 .logo-title {
     -fx-font: 42px "Satisfy";
     -fx-alignment: center;
-    -fx-fill: #F6AE2D;
+    -fx-fill: accent-color;
 }
 
 .underline {
     -fx-border-radius: 150;
-    -fx-fill: secondary-color;
+    -fx-fill: second-accent-color;
 }
 
 .button {
-    -fx-background-color: #F6AE2D;
+    -fx-background-color: accent-color;
     -fx-alignment: center;
     -fx-background-radius: 8;
-    -fx-font: 13 "Roboto";
-    -fx-text-fill: #F1F7ED;
+    -fx-font: 13 Roboto, bold;
+    -fx-text-fill: lightest-color;
     -fx-pref-width: 100;
     -fx-pref-height: 30;
 }
@@ -54,12 +52,12 @@
 }
 
 .secBtn {
-    -fx-background-color: secondary-color;
+    -fx-background-color: second-accent-color;
 }
 
 .text-field {
     -fx-background-radius: 20;
-    -fx-background-color: #F1F7ED;
+    -fx-background-color: lightest-color;
     -fx-alignment: center;
     -fx-pref-height: 25;
     -fx-pref-width: 200;
@@ -67,12 +65,12 @@
 
 .password-field {
     -fx-background-radius: 20;
-    -fx-background-color: #F1F7ED;
+    -fx-background-color: lightest-color;
     -fx-alignment: center;
     -fx-pref-height: 25;
     -fx-pref-width: 200;
 }
 
 .msg {
-    -fx-fill: #F1F7ED;
+    -fx-fill: lightest-color;
 }

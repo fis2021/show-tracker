@@ -1,0 +1,100 @@
+@font-face {
+    src: url("./fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    src: url("./fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+    src: url("./fonts/Satisfy-Regular.ttf");
+}
+
+* {
+    lightest-color: #fff;
+    dark-accent-color: #211E25;
+    darkest-color: #1B1A20;
+    accent-color: #F6AE2D;
+    second-accent-color: #00AFB5;
+}
+
+.root {
+    -fx-background-color: darkest-color;
+    -fx-background-image: url("images/bg-wave.png");
+    -fx-background-repeat: repeat-x;
+    -fx-background-position: bottom;
+}
+
+.h1 {
+    -fx-font-family: Roboto bold;
+    -fx-font-size: 36px;
+    -fx-fill: lightest-color;
+}
+
+.scroll-pane {
+    -fx-background-color: none;
+    -fx-background: dark-accent-color;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.4), 20, 0.0, 0, 5);
+    -fx-tile-alignment: center;
+}
+
+.underline {
+    -fx-border-radius: 150;
+    -fx-fill: second-accent-color;
+}
+
+
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background: dark-accent-color;
+    -fx-background-color :transparent;
+    -fx-border-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-border-radius :2.0em;
+}
+
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background: dark-accent-color;
+    -fx-background-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 0.0 10.0 0.0;
+}
+
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background: dark-accent-color;
+    -fx-background-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 10.0 0.0 0.0;
+
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow{
+    -fx-shape : " ";
+    -fx-padding :0.15em 0.0;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow{
+    -fx-shape : " ";
+    -fx-padding :0.0 0.15em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background: dark-accent-color;
+    -fx-background-color :derive(black,90.0%);
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
+}
+
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-background: dark-accent-color;
+    -fx-background-color :derive(accent-color,10.0%);
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
+}

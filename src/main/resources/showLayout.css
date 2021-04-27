@@ -1,0 +1,50 @@
+@font-face {
+    src: url("./fonts/Roboto-Bold.ttf");
+}
+
+* {
+    lightest-color: #F1F7ED;
+    darkest-color: #1B1A20;
+    accent-color: #F6AE2D;
+    second-accent-color: #00AFB5;
+    dark-accent-color: #211E25;
+}
+
+.root {
+    -fx-pref-height: 220px;
+    -fx-pref-width: 120px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-page-information-alignment: center;
+}
+
+.info {
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+.poster {
+    -fx-alignment: center;
+    -fx-padding: 10px 0 0 0;
+}
+
+.title {
+    -fx-font-family: Roboto bold;
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+    -fx-padding: 5px 0 5px 0;
+    -fx-fill: lightest-color;
+}
+
+.text {
+    -fx-fill: lightest-color;
+}
+
+.line {
+    -fx-fill: accent-color;
+}
+.vote {
+    -fx-alignment: center;
+    -fx-fill: lightest-color;
+    -fx-font-family: Roboto bold;
+}
