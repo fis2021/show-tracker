@@ -25,11 +25,12 @@ import static fis.project.st.controllers.LoginController.getCurrentUser;
 import fis.project.st.services.UserService;
 
 public class NavBarController implements Initializable {
-    private static ArrayList<Show> foundShows;
     @FXML
     private Text username;
     @FXML
     private TextField searchField;
+
+    private static ArrayList<Show> foundShows;
 
     public static ArrayList<Show> getFoundShows() throws ShowNotFoundException {
         if (foundShows.size() == 0) throw new ShowNotFoundException();
@@ -70,18 +71,20 @@ public class NavBarController implements Initializable {
         requests req = new requests();
         String response = "";
         if (search.length() != 0) {
-            response = req.getData("/search/multi?query=" + search.replace(" ", "-").toLowerCase() + "&", 5);
+            response = req.getData("/search/multi?query=" + search.trim().replace(" ", "-").toLowerCase() + "&", "");
         }
+
         if (response.length() > 20)
             foundShows = req.getBaseData(response, "");
-        for(Show show : foundShows){
-            if(show.getType().equals("movie")){
-                if(UserService.checkMovieExists(getCurrentUser().getUsername(), show.getName()) == 0){
+
+        for (Show show : foundShows) {
+            if (show.getType().equals("movie")) {
+                if (UserService.checkMovieExists(getCurrentUser().getUsername(), show.getName()) == 0) {
                     UserService.AddMovieToUser(getCurrentUser().getUsername(), show.getName());
                     System.out.println("added" + show.getName());
                 }
-            }else{
-                if(UserService.checkTvExists(getCurrentUser().getUsername(), show.getName()) == 0){
+            } else {
+                if (UserService.checkTvExists(getCurrentUser().getUsername(), show.getName()) == 0) {
                     UserService.AddTvToUser(getCurrentUser().getUsername(), show.getName());
                     System.out.println("added show " + show.getName());
                 }
@@ -93,8 +96,5 @@ public class NavBarController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         window.setScene(homepageViewScene);
-        window.show();
     }
 }
-
-

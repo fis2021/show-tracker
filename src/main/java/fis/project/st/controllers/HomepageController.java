@@ -36,11 +36,11 @@ public class HomepageController implements Initializable {
         };
         try {
             requests reqMovies = new requests();
-            String movieResponse = reqMovies.getData("/discover/movie?", 10);
+            String movieResponse = reqMovies.getData("/discover/movie?", "");
             ArrayList<Show> movies = reqMovies.getBaseData(movieResponse, "movies"); //20 movies
             createGrid(movies, gridMovies);
             requests reqTV = new requests();
-            String tvResponse = reqTV.getData("/discover/tv?", 10);
+            String tvResponse = reqTV.getData("/discover/tv?", "");
             ArrayList<Show> tvs = reqTV.getBaseData(tvResponse, "tv"); //20 tvs
             createGrid(tvs, gridTV);
         } catch (IOException e) {
@@ -65,11 +65,11 @@ public class HomepageController implements Initializable {
         Show showData;
         if (show.getType().equals("movie")) {
             requests reqMovie = new requests();
-            String movieResponse = reqMovie.getData("/movie/" + show.getId() + "?", 10);
+            String movieResponse = reqMovie.getData("/movie/" + show.getId() + "?", "");
             showData = reqMovie.getMovieById(movieResponse);
         } else {
             requests reqTv = new requests();
-            String tvResponse = reqTv.getData("/tv/" + show.getId() + "?", 10);
+            String tvResponse = reqTv.getData("/tv/" + show.getId() + "?", "");
             showData = reqTv.getTVById(tvResponse);
         }
 

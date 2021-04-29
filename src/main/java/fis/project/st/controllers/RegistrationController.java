@@ -35,10 +35,10 @@ public class RegistrationController implements Initializable{
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         requests reqMovies = new requests();
-        String movieResponse = reqMovies.getData("/discover/movie?", 10);
+        String movieResponse = reqMovies.getData("/discover/movie?", "");
         movies = reqMovies.getBaseData(movieResponse, "movies");
         requests reqTV = new requests();
-        String tvResponse = reqTV.getData("/discover/tv?", 10);
+        String tvResponse = reqTV.getData("/discover/tv?", "");
         tvs = reqTV.getBaseData(tvResponse, "tv");
         }
 
