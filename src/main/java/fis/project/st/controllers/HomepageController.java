@@ -37,11 +37,11 @@ public class HomepageController implements Initializable {
         try {
             requests reqMovies = new requests();
             String movieResponse = reqMovies.getData("/discover/movie?", 10);
-            ArrayList<Show> movies = reqMovies.getBaseData(movieResponse, "movies");
+            ArrayList<Show> movies = reqMovies.getBaseData(movieResponse, "movies"); //20 movies
             createGrid(movies, gridMovies);
             requests reqTV = new requests();
             String tvResponse = reqTV.getData("/discover/tv?", 10);
-            ArrayList<Show> tvs = reqTV.getBaseData(tvResponse, "tv");
+            ArrayList<Show> tvs = reqTV.getBaseData(tvResponse, "tv"); //20 tvs
             createGrid(tvs, gridTV);
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,4 +75,5 @@ public class HomepageController implements Initializable {
 
         return showData;
     }
+
 }

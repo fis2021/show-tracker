@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.Rating?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.TVPageController">
     <children>
@@ -97,6 +98,7 @@
                         <AnchorPane prefHeight="102.0" prefWidth="1015.0" />
                      </children>
                   </VBox>
+                  <Rating fx:id="user_vote_field" layoutX="991.0" layoutY="45.0" rating="0.0" />
                </children>
             </AnchorPane>
         </content>

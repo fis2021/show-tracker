@@ -3,16 +3,21 @@ package fis.project.st.services;
 import fis.project.st.exceptions.NotExistingAccountException;
 import fis.project.st.exceptions.WrongPasswordException;
 import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.filters.Filters;
+import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.*;
 import fis.project.st.exceptions.UsernameAlreadyExistsException;
 import fis.project.st.model.User;
 
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 import static fis.project.st.services.FileSystemService.getPathToFile;
+import java.util.ArrayList;
 
 public class UserService {
 
@@ -24,11 +29,12 @@ public class UserService {
                 .openOrCreate("admin", "admin");
 
         userRepository = database.getRepository(User.class);
+
     }
 
-    public static void addUser(String username, String password) throws UsernameAlreadyExistsException {
+    public static void addUser(String username, String password, ArrayList<String> movies, ArrayList<String> tvs) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
-        userRepository.insert(new User(username, encodePassword(username, password)));
+        userRepository.insert(new User(username, encodePassword(username, password), movies, tvs));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
@@ -53,6 +59,64 @@ public class UserService {
             throw new NotExistingAccountException();
         }
     }
+
+    public static void addMovieUserVote(String username, String rate, String moviename){
+            for(User user : userRepository.find()){
+                if(Objects.equals(username, user.getUsername())){
+
+                    user.setMovieRate(rate, moviename);
+                    userRepository.update(user);
+                }
+            }
+    }
+
+    public static void addTvsUserVote(String username, String rate, String tvsname){
+        for(User user : userRepository.find()){
+                if(Objects.equals(username, user.getUsername())){
+
+                    user.setTvsRate(rate, tvsname);
+                    userRepository.update(user);
+                }
+        }
+    }
+
+    public static ArrayList<String> getMovies(String username) {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                return user.getMovies();
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<String> getMoviesRates(String username){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                return user.getMoviesRates();
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<String> getTvs(String username){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                return user.getTvs();
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<String> getTvsRates(String username){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                return user.getTvsRates();
+            }
+        }
+        return null;
+    }
+
+
 
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();

@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.Rating?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.MoviePageController">
     <children>
@@ -22,19 +23,20 @@
             <Text styleClass="text" text="10" />
          </children>
       </VBox>
-      <HBox alignment="CENTER_LEFT" layoutX="471.0" layoutY="238.0" prefHeight="16.0" prefWidth="200.0" >
+      <HBox alignment="CENTER_LEFT" layoutX="471.0" layoutY="238.0" prefHeight="16.0" prefWidth="200.0">
          <children>
             <Label styleClass="label" text="Release Date: " />
             <Text fx:id="release_date" styleClass="text" textOrigin="CENTER" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="471.0" layoutY="260.0" prefHeight="20.0" prefWidth="250.0" >
+      <HBox alignment="CENTER_LEFT" layoutX="471.0" layoutY="260.0" prefHeight="20.0" prefWidth="250.0">
          <children>
             <Label styleClass="label" text="Runtime: " />
             <Text fx:id="runtime" styleClass="text" textOrigin="CENTER" />
             <Text styleClass="text" text=" minutes" />
          </children>
       </HBox>
+      <Rating fx:id="user_vote_field" layoutX="101.0" layoutY="392.0" rating="0.0" />
     </children>
    <stylesheets>
       <URL value="@homepage.css" />

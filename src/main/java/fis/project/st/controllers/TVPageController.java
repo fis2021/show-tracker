@@ -4,6 +4,8 @@ import fis.project.st.model.Show;
 import fis.project.st.model.TV;
 import fis.project.st.model.TVUtil.Episode;
 import fis.project.st.model.TVUtil.Season;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +19,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import fis.project.st.services.UserService;
+import static fis.project.st.controllers.LoginController.getCurrentUser;
+import org.controlsfx.control.Rating;
+import javafx.scene.control.Label;
+import java.util.ArrayList;
+
 
 public class TVPageController implements Initializable {
     @FXML
@@ -67,6 +75,9 @@ public class TVPageController implements Initializable {
     @FXML
     private ImageView episodeback;
 
+    @FXML
+    private Rating user_vote_field;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TV tv = (TV) HomepageController.getSelectedShow();
@@ -105,5 +116,16 @@ public class TVPageController implements Initializable {
         overviewEp.setText(episode.getOverview());
         image = new Image("https://image.tmdb.org/t/p/w500" + episode.getStill_path());
         episodeback.setImage(image);
+        //database rating
+        ArrayList<String> tvs = UserService.getTvs(getCurrentUser().getUsername());
+        ArrayList<String> tvsRates = UserService.getTvsRates(getCurrentUser().getUsername());
+        int index = tvs.indexOf(tv.getName());
+        user_vote_field.setRating(Double.parseDouble(tvsRates.get(index)));
+        user_vote_field.ratingProperty().addListener(new ChangeListener<Number>() { //action event
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                UserService.addTvsUserVote(getCurrentUser().getUsername(), t1.toString(), tv.getName());
+            }
+        });
     }
 }
