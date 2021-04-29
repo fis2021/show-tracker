@@ -22,6 +22,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static fis.project.st.controllers.LoginController.getCurrentUser;
+import fis.project.st.services.UserService;
 
 public class NavBarController implements Initializable {
     private static ArrayList<Show> foundShows;
@@ -73,6 +74,19 @@ public class NavBarController implements Initializable {
         }
         if (response.length() > 20)
             foundShows = req.getBaseData(response, "");
+        for(Show show : foundShows){
+            if(show.getType().equals("movie")){
+                if(UserService.checkMovieExists(getCurrentUser().getUsername(), show.getName()) == 0){
+                    UserService.AddMovieToUser(getCurrentUser().getUsername(), show.getName());
+                    System.out.println("added" + show.getName());
+                }
+            }else{
+                if(UserService.checkTvExists(getCurrentUser().getUsername(), show.getName()) == 0){
+                    UserService.AddTvToUser(getCurrentUser().getUsername(), show.getName());
+                    System.out.println("added show " + show.getName());
+                }
+            }
+        }
         Parent homepageViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("searchPage.fxml")));
         Scene homepageViewScene = new Scene(homepageViewParent);
 

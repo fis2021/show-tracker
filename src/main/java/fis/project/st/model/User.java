@@ -25,13 +25,41 @@ public class User {
         this.movies = movies;
         this.tvs = tvs;
         this.moviesRates = new ArrayList<String>();
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 10000; i++) {
             moviesRates.add("0");
         }
         this.tvsRates = new ArrayList<String>();
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 10000; i++) {
             tvsRates.add("0");
         }
+    }
+
+    public int checkIfMovieExists(String moviename){
+
+        for(String movie : movies){
+            if(movie.equals(moviename)){
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    public int checkIfTvExists(String tvname){
+
+        for(String tv : tvs){
+            if(tv.equals(tvname)){
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    public void addMovie(String moviename){
+        movies.add(moviename);
+    }
+
+    public void addTv(String tvname){
+        tvs.add(tvname);
     }
 
     public void setMovieRate(String rate, String movie){

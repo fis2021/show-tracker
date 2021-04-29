@@ -116,7 +116,43 @@ public class UserService {
         return null;
     }
 
+    public static int checkMovieExists(String username, String moviename){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                if(user.checkIfMovieExists(moviename) == 1)
+                    return 1;
+            }
+        }
+        return 0;
+    }
 
+    public static int checkTvExists(String username, String tvname){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                if(user.checkIfTvExists(tvname) == 1)
+                    return 1;
+            }
+        }
+        return 0;
+    }
+
+    public static void AddMovieToUser(String username, String moviename){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                    user.addMovie(moviename);
+                    userRepository.update(user);
+            }
+        }
+    }
+
+    public static void AddTvToUser(String username, String tvname){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                user.addTv(tvname);
+                userRepository.update(user);
+            }
+        }
+    }
 
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();

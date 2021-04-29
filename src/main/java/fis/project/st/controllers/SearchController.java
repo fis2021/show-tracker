@@ -2,6 +2,10 @@ package fis.project.st.controllers;
 
 import fis.project.st.exceptions.ShowNotFoundException;
 import fis.project.st.model.Show;
+import fis.project.st.model.Movie;
+import fis.project.st.model.TV;
+import fis.project.st.services.UserService;
+import static fis.project.st.controllers.LoginController.getCurrentUser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,7 +36,7 @@ public class SearchController implements Initializable {
         searchGrid.setHgap(10);
         ArrayList<Show> shows;
         try {
-            shows = NavBarController.getFoundShows();
+            shows = NavBarController.getFoundShows(); //array of shows found on a search
             for (Show show : shows) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/showLayout.fxml"));
