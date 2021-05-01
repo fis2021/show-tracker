@@ -132,14 +132,13 @@ public class TVPageController implements Initializable {
         ArrayList<String> tvsRates = UserService.getTvsRates(getCurrentUser().getUsername());
         user_vote_field.setRating(Double.parseDouble(tvsRates.get(index)));
         //database comment
-        ArrayList<String> tvComments = UserService.getTvUserComments(getCurrentUser().getUsername());
-        comment_field.setText(tvComments.get(index));
         ArrayList<String> tvUserCommentsPerTv = UserService.getUsersCommentsPerTv(tv.getName());
         String usersComments = "";
         for(String s : tvUserCommentsPerTv){
             usersComments = usersComments + s;
         }
         users_comments_area.setText(usersComments);
+
         user_vote_field.ratingProperty().addListener(new ChangeListener<Number>() { //action event
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
@@ -151,5 +150,11 @@ public class TVPageController implements Initializable {
     public void addTvComment(){
         UserService.addTvUserComment(getCurrentUser().getUsername(), tv.getName(), comment_field.getText());
         added_comm_message.setText("Your comment was added!");
+        ArrayList<String> tvUserCommentsPerTv = UserService.getUsersCommentsPerTv(tv.getName());
+        String usersComments = "";
+        for(String s : tvUserCommentsPerTv){
+            usersComments = usersComments + s;
+        }
+        users_comments_area.setText(usersComments);
     }
 }

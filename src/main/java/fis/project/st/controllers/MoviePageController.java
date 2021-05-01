@@ -71,16 +71,11 @@ public class MoviePageController implements Initializable {
         ArrayList<String> moviesRates = UserService.getMoviesRates(getCurrentUser().getUsername());
         user_vote_field.setRating(Double.parseDouble(moviesRates.get(index)));
         //database comment
-        ArrayList<String> movieComments = UserService.getMovieUserComments(getCurrentUser().getUsername());
-        comment_field.setText(movieComments.get(index));
-
         ArrayList<String> movieUserCommentsPerMovie = UserService.getUsersCommentsPerMovie(movie.getName());
-
         String usersComments = "";
         for(String s : movieUserCommentsPerMovie){
             usersComments = usersComments + s;
         }
-
         users_comments_area.setText(usersComments);
 
         user_vote_field.ratingProperty().addListener(new ChangeListener<Number>() { //action event
@@ -94,5 +89,11 @@ public class MoviePageController implements Initializable {
     public void addComment(){
         UserService.addMovieUserComment(getCurrentUser().getUsername(), movie.getName(), comment_field.getText());
         added_comm_message.setText("Your comment was added!");
+        ArrayList<String> movieUserCommentsPerMovie = UserService.getUsersCommentsPerMovie(movie.getName());
+        String usersComments = "";
+        for(String s : movieUserCommentsPerMovie){
+            usersComments = usersComments + s;
+        }
+        users_comments_area.setText(usersComments);
     }
 }

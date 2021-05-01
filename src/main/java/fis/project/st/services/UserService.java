@@ -190,9 +190,13 @@ public class UserService {
     public static ArrayList<String> getUsersCommentsPerMovie(String moviename) {
         ArrayList<String> movieComments = new ArrayList<String>();
         for (User user : userRepository.find()) {
-            if (user.checkIfMovieExists(moviename) == 1 && !user.getUsername().equals(getCurrentUser().getUsername())) {
+            if (user.checkIfMovieExists(moviename) == 1) {
                 if (!user.getMovieComment(moviename).equals("")) {
-                    movieComments.add(user.getUsername() + " commented:\n" + user.getMovieComment(moviename) + "\n--------\n");
+                    if (user.getUsername().equals(getCurrentUser().getUsername())) {
+                        movieComments.add("Your comment:\n" + user.getMovieComment(moviename) + "\n--------\n");
+                    } else {
+                        movieComments.add(user.getUsername() + " commented:\n" + user.getMovieComment(moviename) + "\n--------\n");
+                    }
                 }
             }
         }
@@ -202,9 +206,13 @@ public class UserService {
     public static ArrayList<String> getUsersCommentsPerTv(String tvname){
         ArrayList<String> tvComments = new ArrayList<String>();
         for(User user : userRepository.find()) {
-            if (user.checkIfTvExists(tvname) == 1 && !user.getUsername().equals(getCurrentUser().getUsername())) {
+            if (user.checkIfTvExists(tvname) == 1) {
                 if (!user.getTvComment(tvname).equals("")) {
-                    tvComments.add(user.getUsername() + " commented:\n" + user.getTvComment(tvname) + "\n--------\n");
+                    if(user.getUsername().equals(getCurrentUser().getUsername())){
+                        tvComments.add("Your comment:\n" + user.getTvComment(tvname) + "\n--------\n");
+                    }else{
+                        tvComments.add(user.getUsername() + " commented:\n" + user.getTvComment(tvname) + "\n--------\n");
+                    }
                 }
             }
         }
