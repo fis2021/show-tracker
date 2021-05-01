@@ -3,14 +3,11 @@ package fis.project.st.services;
 import fis.project.st.exceptions.NotExistingAccountException;
 import fis.project.st.exceptions.WrongPasswordException;
 import org.dizitart.no2.Nitrite;
-import org.dizitart.no2.filters.Filters;
-import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.dizitart.no2.objects.*;
 import fis.project.st.exceptions.UsernameAlreadyExistsException;
 import fis.project.st.model.User;
+import static fis.project.st.controllers.LoginController.getCurrentUser;
 
-import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -152,6 +149,66 @@ public class UserService {
                 userRepository.update(user);
             }
         }
+    }
+
+    public static void addMovieUserComment(String username, String moviename, String comm){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                user.addMovieComment(comm, moviename);
+                userRepository.update(user);
+            }
+        }
+    }
+
+    public static void addTvUserComment(String username, String tvname, String comm){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                user.addTvComment(comm, tvname);
+                userRepository.update(user);
+            }
+        }
+    }
+
+    public static ArrayList<String> getMovieUserComments(String username){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                return user.getMovieComments();
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<String> getTvUserComments(String username){
+        for(User user : userRepository.find()){
+            if(Objects.equals(username, user.getUsername())){
+                return user.getTvComments();
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<String> getUsersCommentsPerMovie(String moviename) {
+        ArrayList<String> movieComments = new ArrayList<String>();
+        for (User user : userRepository.find()) {
+            if (user.checkIfMovieExists(moviename) == 1 && !user.getUsername().equals(getCurrentUser().getUsername())) {
+                if (!user.getMovieComment(moviename).equals("")) {
+                    movieComments.add(user.getUsername() + " commented:\n" + user.getMovieComment(moviename) + "\n--------\n");
+                }
+            }
+        }
+        return movieComments;
+    }
+
+    public static ArrayList<String> getUsersCommentsPerTv(String tvname){
+        ArrayList<String> tvComments = new ArrayList<String>();
+        for(User user : userRepository.find()) {
+            if (user.checkIfTvExists(tvname) == 1 && !user.getUsername().equals(getCurrentUser().getUsername())) {
+                if (!user.getTvComment(tvname).equals("")) {
+                    tvComments.add(user.getUsername() + " commented:\n" + user.getTvComment(tvname) + "\n--------\n");
+                }
+            }
+        }
+        return tvComments;
     }
 
     private static String encodePassword(String salt, String password) {

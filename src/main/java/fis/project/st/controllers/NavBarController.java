@@ -81,12 +81,10 @@ public class NavBarController implements Initializable {
             if (show.getType().equals("movie")) {
                 if (UserService.checkMovieExists(getCurrentUser().getUsername(), show.getName()) == 0) {
                     UserService.AddMovieToUser(getCurrentUser().getUsername(), show.getName());
-                    System.out.println("added" + show.getName());
                 }
             } else {
                 if (UserService.checkTvExists(getCurrentUser().getUsername(), show.getName()) == 0) {
                     UserService.AddTvToUser(getCurrentUser().getUsername(), show.getName());
-                    System.out.println("added show " + show.getName());
                 }
             }
         }

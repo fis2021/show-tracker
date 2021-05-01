@@ -1,6 +1,5 @@
 package fis.project.st.controllers;
 
-import fis.project.st.model.Show;
 import fis.project.st.model.TV;
 import fis.project.st.model.TVUtil.Episode;
 import fis.project.st.model.TVUtil.Season;
@@ -9,6 +8,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -22,8 +23,6 @@ import java.util.ResourceBundle;
 import fis.project.st.services.UserService;
 import static fis.project.st.controllers.LoginController.getCurrentUser;
 import org.controlsfx.control.Rating;
-import javafx.scene.control.Label;
-import java.util.ArrayList;
 
 
 public class TVPageController implements Initializable {
@@ -78,9 +77,20 @@ public class TVPageController implements Initializable {
     @FXML
     private Rating user_vote_field;
 
+    @FXML
+    private TextField comment_field;
+
+    @FXML
+    private TextArea users_comments_area;
+
+    @FXML
+    private Text added_comm_message;
+
+    private TV tv;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TV tv = (TV) HomepageController.getSelectedShow();
+        tv = (TV) HomepageController.getSelectedShow();
         title.setText(tv.getName());
         title.setWrappingWidth(600);
         overview.setText(tv.getOverview());
@@ -118,14 +128,28 @@ public class TVPageController implements Initializable {
         episodeback.setImage(image);
         //database rating
         ArrayList<String> tvs = UserService.getTvs(getCurrentUser().getUsername());
-        ArrayList<String> tvsRates = UserService.getTvsRates(getCurrentUser().getUsername());
         int index = tvs.indexOf(tv.getName());
+        ArrayList<String> tvsRates = UserService.getTvsRates(getCurrentUser().getUsername());
         user_vote_field.setRating(Double.parseDouble(tvsRates.get(index)));
+        //database comment
+        ArrayList<String> tvComments = UserService.getTvUserComments(getCurrentUser().getUsername());
+        comment_field.setText(tvComments.get(index));
+        ArrayList<String> tvUserCommentsPerTv = UserService.getUsersCommentsPerTv(tv.getName());
+        String usersComments = "";
+        for(String s : tvUserCommentsPerTv){
+            usersComments = usersComments + s;
+        }
+        users_comments_area.setText(usersComments);
         user_vote_field.ratingProperty().addListener(new ChangeListener<Number>() { //action event
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 UserService.addTvsUserVote(getCurrentUser().getUsername(), t1.toString(), tv.getName());
             }
         });
+    }
+
+    public void addTvComment(){
+        UserService.addTvUserComment(getCurrentUser().getUsername(), tv.getName(), comment_field.getText());
+        added_comm_message.setText("Your comment was added!");
     }
 }

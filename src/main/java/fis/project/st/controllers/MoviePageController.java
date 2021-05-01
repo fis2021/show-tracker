@@ -1,21 +1,19 @@
 package fis.project.st.controllers;
 
+import fis.project.st.exceptions.UsernameAlreadyExistsException;
 import fis.project.st.model.Movie;
-import fis.project.st.model.Show;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import org.controlsfx.control.Rating;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import static fis.project.st.controllers.LoginController.getCurrentUser;
-import static fis.project.st.controllers.HomepageController.getSelectedShow;
-import fis.project.st.model.User;
-import java.awt.*;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
@@ -44,9 +42,20 @@ public class MoviePageController implements Initializable {
     @FXML
     private Rating user_vote_field;
 
+    @FXML
+    private TextField comment_field;
+
+    @FXML
+    private TextArea users_comments_area;
+
+    @FXML
+    private Text added_comm_message;
+
+    private Movie movie;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Movie movie = (Movie) HomepageController.getSelectedShow();
+        movie = (Movie) HomepageController.getSelectedShow();
         title.setText(movie.getName());
         title.setWrappingWidth(600);
         overview.setText(movie.getOverview());
@@ -58,14 +67,32 @@ public class MoviePageController implements Initializable {
         runtime.setText(String.valueOf(movie.getRuntime()));
         //database rating
         ArrayList<String> movies = UserService.getMovies(getCurrentUser().getUsername());
-        ArrayList<String> moviesRates = UserService.getMoviesRates(getCurrentUser().getUsername());
         int index = movies.indexOf(movie.getName());
+        ArrayList<String> moviesRates = UserService.getMoviesRates(getCurrentUser().getUsername());
         user_vote_field.setRating(Double.parseDouble(moviesRates.get(index)));
+        //database comment
+        ArrayList<String> movieComments = UserService.getMovieUserComments(getCurrentUser().getUsername());
+        comment_field.setText(movieComments.get(index));
+
+        ArrayList<String> movieUserCommentsPerMovie = UserService.getUsersCommentsPerMovie(movie.getName());
+
+        String usersComments = "";
+        for(String s : movieUserCommentsPerMovie){
+            usersComments = usersComments + s;
+        }
+
+        users_comments_area.setText(usersComments);
+
         user_vote_field.ratingProperty().addListener(new ChangeListener<Number>() { //action event
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 UserService.addMovieUserVote(getCurrentUser().getUsername(), t1.toString(), movie.getName());
             }
         });
+    }
+
+    public void addComment(){
+        UserService.addMovieUserComment(getCurrentUser().getUsername(), movie.getName(), comment_field.getText());
+        added_comm_message.setText("Your comment was added!");
     }
 }

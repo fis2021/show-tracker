@@ -2,7 +2,6 @@ package fis.project.st.model;
 
 import org.dizitart.no2.objects.Id;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class User {
@@ -13,6 +12,8 @@ public class User {
     private ArrayList<String> tvs;
     private ArrayList<String> moviesRates;
     private ArrayList<String> tvsRates;
+    private ArrayList<String> movieComments;
+    private ArrayList<String> tvComments;
 
     public User(String username, String password) {
         this.username = username;
@@ -25,12 +26,20 @@ public class User {
         this.movies = movies;
         this.tvs = tvs;
         this.moviesRates = new ArrayList<String>();
-        for(int i = 0; i < 10000; i++) {
+        for(int i = 0; i < 1000; i++) {
             moviesRates.add("0");
         }
         this.tvsRates = new ArrayList<String>();
-        for(int i = 0; i < 10000; i++) {
+        for(int i = 0; i < 1000; i++) {
             tvsRates.add("0");
+        }
+        this.movieComments = new ArrayList<String>();
+        for(int i = 0; i < 1000; i++){
+            movieComments.add("");
+        }
+        this.tvComments = new ArrayList<String>();
+        for(int i = 0; i < 1000; i++){
+            tvComments.add("");
         }
     }
 
@@ -52,6 +61,38 @@ public class User {
             }
         }
         return 0;
+    }
+
+    public void addMovieComment(String comm, String moviename){
+
+        int index = movies.indexOf(moviename);
+        movieComments.set(index, comm);
+    }
+
+    public ArrayList<String> getMovieComments() {
+        return movieComments;
+    }
+
+    public void addTvComment(String comm, String tvname){
+
+        int index = tvs.indexOf(tvname);
+        tvComments.set(index, comm);
+    }
+
+    public ArrayList<String> getTvComments() {
+        return tvComments;
+    }
+
+    public String getMovieComment(String moviename){
+
+        int index = movies.indexOf(moviename);
+        return movieComments.get(index);
+    }
+
+    public String getTvComment(String tvname){
+
+        int index = tvs.indexOf(tvname);
+        return tvComments.get(index);
     }
 
     public void addMovie(String moviename){
