@@ -37,6 +37,7 @@
          </children>
       </HBox>
       <Rating fx:id="user_vote_field" layoutX="101.0" layoutY="392.0" rating="0.0" />
+        <fx:include source="watchlistButton.fxml" translateX="1000.0" translateY="200.0" />
     </children>
    <stylesheets>
       <URL value="@homepage.css" />

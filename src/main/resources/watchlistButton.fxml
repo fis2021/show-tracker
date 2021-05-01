@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="40.0" prefWidth="165.0" stylesheets="@watchlistButton.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.WatchlistButtonController">
+   <children>
+      <Button fx:id="removeBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleRemoveFromWatchlist" prefHeight="40.0" prefWidth="197.0" styleClass="secBtn" text="Remove from Watchlist" textAlignment="CENTER" />
+      <Button fx:id="addBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAddToWatchlist" prefHeight="40.0" prefWidth="120.0" text="Add to Watchlist" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

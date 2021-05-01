@@ -99,6 +99,7 @@
                      </children>
                   </VBox>
                   <Rating fx:id="user_vote_field" layoutX="991.0" layoutY="45.0" rating="0.0" />
+                <fx:include source="watchlistButton.fxml" translateX="1000.0" translateY="200.0" />
                </children>
             </AnchorPane>
         </content>

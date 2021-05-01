@@ -1,6 +1,5 @@
 package fis.project.st.controllers;
 
-import fis.project.st.model.Show;
 import fis.project.st.model.TV;
 import fis.project.st.model.TVUtil.Episode;
 import fis.project.st.model.TVUtil.Season;
@@ -22,9 +21,6 @@ import java.util.ResourceBundle;
 import fis.project.st.services.UserService;
 import static fis.project.st.controllers.LoginController.getCurrentUser;
 import org.controlsfx.control.Rating;
-import javafx.scene.control.Label;
-import java.util.ArrayList;
-
 
 public class TVPageController implements Initializable {
     @FXML
