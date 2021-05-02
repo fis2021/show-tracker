@@ -48,3 +48,15 @@
     -fx-fill: lightest-color;
     -fx-font-family: Roboto bold;
 }
+
+.label-wrap {
+    -fx-background-color: second-accent-color;
+    -fx-background-radius: 10px;
+    -fx-text-alignment: center;
+}
+
+.label {
+    -fx-fill: lightest-color;
+    -fx-font-family: Roboto Bold;
+    -fx-font-size: 12px;
+}
