@@ -2,7 +2,6 @@ package fis.project.st.model;
 
 import org.dizitart.no2.objects.Id;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class User {
@@ -28,23 +27,26 @@ public class User {
         this.movies = movies;
         this.tvs = tvs;
         this.moviesRates = new ArrayList<String>();
-        for(int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1000; i++) {
             moviesRates.add("0");
         }
         this.tvsRates = new ArrayList<String>();
-        for(int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1000; i++) {
             tvsRates.add("0");
         }
         this.movieComments = new ArrayList<String>();
-        for(int i = 0; i < 1000; i++){
+        for (int i = 0; i < 1000; i++) {
             movieComments.add("");
         }
         this.tvComments = new ArrayList<String>();
-        for(int i = 0; i < 1000; i++){
+        for (int i = 0; i < 1000; i++) {
             tvComments.add("");
         }
     }
 
+
+    public User() {
+    }
 
     public static ArrayList<Show> getFollowedShows() {
         return followedShows;
@@ -56,25 +58,25 @@ public class User {
 
     public int checkIfMovieExists(String moviename) {
 
-        for(String movie : movies){
-            if(movie.equals(moviename)){
+        for (String movie : movies) {
+            if (movie.equals(moviename)) {
                 return 1;
             }
         }
         return 0;
     }
 
-    public int checkIfTvExists(String tvname){
+    public int checkIfTvExists(String tvname) {
 
-        for(String tv : tvs){
-            if(tv.equals(tvname)){
+        for (String tv : tvs) {
+            if (tv.equals(tvname)) {
                 return 1;
             }
         }
         return 0;
     }
 
-    public void addMovieComment(String comm, String moviename){
+    public void addMovieComment(String comm, String moviename) {
 
         int index = movies.indexOf(moviename);
         movieComments.set(index, comm);
@@ -84,7 +86,7 @@ public class User {
         return movieComments;
     }
 
-    public void addTvComment(String comm, String tvname){
+    public void addTvComment(String comm, String tvname) {
 
         int index = tvs.indexOf(tvname);
         tvComments.set(index, comm);
@@ -94,19 +96,19 @@ public class User {
         return tvComments;
     }
 
-    public String getMovieComment(String moviename){
+    public String getMovieComment(String moviename) {
 
         int index = movies.indexOf(moviename);
         return movieComments.get(index);
     }
 
-    public String getTvComment(String tvname){
+    public String getTvComment(String tvname) {
 
         int index = tvs.indexOf(tvname);
         return tvComments.get(index);
     }
 
-    public void addMovie(String moviename){
+    public void addMovie(String moviename) {
         movies.add(moviename);
     }
 
@@ -132,9 +134,6 @@ public class User {
 
     public ArrayList<String> getTvs() {
         return tvs;
-    }
-
-    public User() {
     }
 
     public ArrayList<String> getMoviesRates() {
