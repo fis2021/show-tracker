@@ -9,6 +9,7 @@ import java.util.Objects;
 public class Show {
     private int id;
     private String poster_path;
+
     private String backdrop_path;
     private String overview;
     private float vote_average;
@@ -16,6 +17,7 @@ public class Show {
     private String status;
     private String name;
     private String type;
+    private boolean isFollowed;
 
     public Show(int id, String poster_path, String backdrop_path, String overview, float vote_average, ArrayList<Genre> genres, String status, String name, String type) {
         this.id = id;
@@ -63,6 +65,28 @@ public class Show {
 
     public String getType() {
         return type;
+    }
+
+    public boolean isFollowed() {
+        return isFollowed;
+    }
+
+    public void setFollowed(boolean followed) {
+        isFollowed = followed;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Show)) return false;
+        Show show = (Show) o;
+        return getId() == show.getId() && Float.compare(show.getVote_average(), getVote_average()) == 0 && getPoster_path().equals(show.getPoster_path()) && getBackdrop_path().equals(show.getBackdrop_path()) && getOverview().equals(show.getOverview()) && getGenres().equals(show.getGenres()) && getStatus().equals(show.getStatus()) && getName().equals(show.getName()) && getType().equals(show.getType());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getPoster_path(), getBackdrop_path(), getOverview(), getVote_average(), getGenres(), getStatus(), getName(), getType());
     }
 
     @Override

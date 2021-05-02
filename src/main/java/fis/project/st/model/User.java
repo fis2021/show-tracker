@@ -2,9 +2,11 @@ package fis.project.st.model;
 
 import org.dizitart.no2.objects.Id;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class User {
+    private static ArrayList<Show> followedShows = new ArrayList<>();
     @Id
     private String username;
     private String password;
@@ -43,7 +45,16 @@ public class User {
         }
     }
 
-    public int checkIfMovieExists(String moviename){
+
+    public static ArrayList<Show> getFollowedShows() {
+        return followedShows;
+    }
+
+    public static void setFollowedShows(ArrayList<Show> followedShows) {
+        User.followedShows = followedShows;
+    }
+
+    public int checkIfMovieExists(String moviename) {
 
         for(String movie : movies){
             if(movie.equals(moviename)){
@@ -99,17 +110,17 @@ public class User {
         movies.add(moviename);
     }
 
-    public void addTv(String tvname){
+    public void addTv(String tvname) {
         tvs.add(tvname);
     }
 
-    public void setMovieRate(String rate, String movie){
+    public void setMovieRate(String rate, String movie) {
 
         int index = movies.indexOf(movie);
         moviesRates.set(index, rate);
     }
 
-    public void setTvsRate(String rate, String tvsname){
+    public void setTvsRate(String rate, String tvsname) {
 
         int index = tvs.indexOf(tvsname);
         tvsRates.set(index, rate);

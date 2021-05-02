@@ -107,6 +107,7 @@
                   <Button layoutX="1141.0" layoutY="258.0" mnemonicParsing="false" onAction="#addTvComment" text="Add Comment" textFill="#7c3636" />
                   <TextArea fx:id="users_comments_area" layoutX="985.0" layoutY="337.0" prefHeight="200.0" prefWidth="200.0" />
                   <Text fx:id="added_comm_message" fill="WHITE" layoutX="1011.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                <fx:include source="watchlistButton.fxml" translateX="1000.0" translateY="200.0" />
                </children>
             </AnchorPane>
         </content>

@@ -1,0 +1,33 @@
+@font-face {
+    src: url("./fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+    src: url("./fonts/Roboto-Regular.ttf");
+}
+
+* {
+    lightest-color: #F1F7ED;
+    darkest-color: #1B1A20;
+    accent-color: #F6AE2D;
+    second-accent-color: #00AFB5;
+}
+
+.button {
+    -fx-background-color: accent-color;
+    -fx-alignment: center;
+    -fx-background-radius: 8;
+    -fx-font: 14 Roboto;
+    -fx-text-fill: lightest-color;
+    -fx-pref-width: 165;
+    -fx-pref-height: 40;
+}
+
+.button .text {
+    -fx-effect: dropshadow(one-pass-box, rgba(12, 8, 11, 0.1), 1, 0, 1, 1);
+    -fx-font-family: Roboto bold;
+}
+
+.secBtn {
+    -fx-background-color: second-accent-color;
+}

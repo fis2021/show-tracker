@@ -45,6 +45,8 @@
       <Button layoutX="370.0" layoutY="588.0" mnemonicParsing="false" onAction="#addComment" text="Add comment" textFill="#12b896" />
       <TextArea fx:id="users_comments_area" layoutX="540.0" layoutY="472.0" prefHeight="200.0" prefWidth="200.0" />
       <Text fx:id="added_comm_message" fill="#fcfcfc" layoutX="101.0" layoutY="607.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+        <fx:include source="watchlistButton.fxml" translateX="1000.0" translateY="200.0" />
+
     </children>
    <stylesheets>
       <URL value="@homepage.css" />

@@ -38,8 +38,9 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="78.0" prefWidth="410.0">
                     <children>
-                        <Button layoutX="71.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleHomepageScene" text="Homepage" />
-                        <Button layoutX="248.0" layoutY="22.0" mnemonicParsing="false" text="Watchlist" />
+                        <Button layoutY="20.0" mnemonicParsing="false" onAction="#handleHomepageScene" text="Homepage" />
+                        <Button layoutX="127.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleWatchlistScene" text="Watchlist" />
+                  <Button layoutX="244.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleWatchlistScene" text="Upcoming" />
                     </children>
                 </AnchorPane>
             </children>
