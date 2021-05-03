@@ -4,8 +4,9 @@ import org.dizitart.no2.objects.Id;
 
 import java.util.ArrayList;
 
+
 public class User {
-    private static ArrayList<Show> followedShows = new ArrayList<>();
+
     @Id
     private String username;
     private String password;
@@ -15,6 +16,7 @@ public class User {
     private ArrayList<String> tvsRates;
     private ArrayList<String> movieComments;
     private ArrayList<String> tvComments;
+    private ArrayList<Show> watchlist;
 
     public User(String username, String password) {
         this.username = username;
@@ -42,18 +44,36 @@ public class User {
         for (int i = 0; i < 1000; i++) {
             tvComments.add("");
         }
+        this.watchlist = new ArrayList<Show>();
     }
-
 
     public User() {
     }
 
-    public static ArrayList<Show> getFollowedShows() {
-        return followedShows;
+    public void addToWatchlist(Show show){
+        watchlist.add(show);
     }
 
-    public static void setFollowedShows(ArrayList<Show> followedShows) {
-        User.followedShows = followedShows;
+    public boolean isInWatchlist(Show givenshow){
+        for(Show show : watchlist){
+            if(show.getName().equals(givenshow.getName())){     //default show.equals not working!
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeFromWatchlist(Show givenshow){
+        for(Show show : watchlist){
+            if(show.getName().equals(givenshow.getName())){     //default show.equals not working!
+                watchlist.remove(show);
+                break;      //Avoiding ConcurrentModificationException
+            }
+        }
+    }
+
+    public ArrayList<Show> getWatchlist() {
+        return watchlist;
     }
 
     public int checkIfMovieExists(String moviename) {

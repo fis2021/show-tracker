@@ -6,6 +6,7 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import fis.project.st.exceptions.UsernameAlreadyExistsException;
 import fis.project.st.model.User;
+import fis.project.st.model.Show;
 import static fis.project.st.controllers.LoginController.getCurrentUser;
 
 import java.nio.charset.StandardCharsets;
@@ -218,6 +219,49 @@ public class UserService {
         }
         return tvComments;
     }
+
+    public static void addShowToUserWatchlist(String username, Show givenshow){
+        for(User user : userRepository.find()){
+            if(Objects.equals(user.getUsername(), username)){
+                if(!user.isInWatchlist(givenshow)) {
+                    user.addToWatchlist(givenshow);
+                    userRepository.update(user);
+                }
+            }
+        }
+    }
+
+    public static ArrayList<Show> getUserShowsAddedToWatchlist(String username){
+        for(User user : userRepository.find()){
+            if(Objects.equals(user.getUsername(), username)){
+                return user.getWatchlist();
+            }
+        }
+        return null;
+    }
+
+    public static boolean checkIfShowIsInWatchlist(String username, Show show){
+        for(User user : userRepository.find()){
+            if(Objects.equals(user.getUsername(), username)){
+                if(user.isInWatchlist(show)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void deleteShowFromWatchlist(String username, Show show){
+        for(User user : userRepository.find()){
+            if(Objects.equals(user.getUsername(), username)){
+                if(user.isInWatchlist(show)){
+                    user.removeFromWatchlist(show);
+                    userRepository.update(user);
+                }
+            }
+        }
+    }
+
 
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();

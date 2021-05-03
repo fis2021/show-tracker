@@ -1,7 +1,6 @@
 package fis.project.st.controllers;
 
 import fis.project.st.model.Show;
-import fis.project.st.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +12,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import fis.project.st.services.UserService;
+import static fis.project.st.controllers.LoginController.getCurrentUser;
 
 public class WatchlistPageController implements Initializable {
     @FXML
@@ -27,7 +28,7 @@ public class WatchlistPageController implements Initializable {
         watchGrid.setVgap(10);
         watchGrid.setHgap(10);
         ArrayList<Show> shows;
-        shows = User.getFollowedShows(); //array of shows found on a search
+        shows = UserService.getUserShowsAddedToWatchlist(getCurrentUser().getUsername()); //array of shows found on a search
         for (Show show : shows) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/showLayoutLabel.fxml"));

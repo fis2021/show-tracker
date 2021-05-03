@@ -31,6 +31,10 @@ public class Show {
         this.type = type;
     }
 
+    public Show(){
+
+    }
+
     public int getId() {
         return id;
     }
@@ -88,6 +92,8 @@ public class Show {
     public int hashCode() {
         return Objects.hash(getId(), getPoster_path(), getBackdrop_path(), getOverview(), getVote_average(), getGenres(), getStatus(), getName(), getType());
     }
+
+
 
     @Override
     public String toString() {
