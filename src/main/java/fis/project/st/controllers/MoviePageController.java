@@ -51,6 +51,7 @@ public class MoviePageController implements Initializable {
     @FXML
     private Text added_comm_message;
 
+
     private Movie movie;
 
     @Override
@@ -73,7 +74,7 @@ public class MoviePageController implements Initializable {
         //database comment
         ArrayList<String> movieUserCommentsPerMovie = UserService.getUsersCommentsPerMovie(movie.getName());
         String usersComments = "";
-        for(String s : movieUserCommentsPerMovie){
+        for (String s : movieUserCommentsPerMovie) {
             usersComments = usersComments + s;
         }
         users_comments_area.setText(usersComments);
@@ -81,19 +82,33 @@ public class MoviePageController implements Initializable {
         user_vote_field.ratingProperty().addListener(new ChangeListener<Number>() { //action event
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                UserService.addMovieUserVote(getCurrentUser().getUsername(), t1.toString(), movie.getName());
+                if(UserService.checkIfShowIsInWatchlist(getCurrentUser().getUsername(), movie)) {
+                    UserService.addMovieUserVote(getCurrentUser().getUsername(), t1.toString(), movie.getName());
+                }
+                else{
+                    added_comm_message.setText("You must follow the show!");
+                    user_vote_field.setRating(0.0);
+                }
             }
         });
+
+
     }
 
-    public void addComment(){
-        UserService.addMovieUserComment(getCurrentUser().getUsername(), movie.getName(), comment_field.getText());
-        added_comm_message.setText("Your comment was added!");
-        ArrayList<String> movieUserCommentsPerMovie = UserService.getUsersCommentsPerMovie(movie.getName());
-        String usersComments = "";
-        for(String s : movieUserCommentsPerMovie){
-            usersComments = usersComments + s;
+    public void addComment() {
+        if (UserService.checkIfShowIsInWatchlist(getCurrentUser().getUsername(), movie)) {
+
+            UserService.addMovieUserComment(getCurrentUser().getUsername(), movie.getName(), comment_field.getText());
+            added_comm_message.setText("Your comment was added!");
+            comment_field.setText("");
+            ArrayList<String> movieUserCommentsPerMovie = UserService.getUsersCommentsPerMovie(movie.getName());
+            String usersComments = "";
+            for (String s : movieUserCommentsPerMovie) {
+                usersComments = usersComments + s;
+            }
+            users_comments_area.setText(usersComments);
+        } else {
+            added_comm_message.setText("You must follow the show!");
         }
-        users_comments_area.setText(usersComments);
     }
 }

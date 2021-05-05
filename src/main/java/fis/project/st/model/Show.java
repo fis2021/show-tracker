@@ -17,7 +17,6 @@ public class Show {
     private String status;
     private String name;
     private String type;
-    private boolean isFollowed;
 
     public Show(int id, String poster_path, String backdrop_path, String overview, float vote_average, ArrayList<Genre> genres, String status, String name, String type) {
         this.id = id;
@@ -71,15 +70,6 @@ public class Show {
         return type;
     }
 
-    public boolean isFollowed() {
-        return isFollowed;
-    }
-
-    public void setFollowed(boolean followed) {
-        isFollowed = followed;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,8 +82,6 @@ public class Show {
     public int hashCode() {
         return Objects.hash(getId(), getPoster_path(), getBackdrop_path(), getOverview(), getVote_average(), getGenres(), getStatus(), getName(), getType());
     }
-
-
 
     @Override
     public String toString() {

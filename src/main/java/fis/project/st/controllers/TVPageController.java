@@ -142,19 +142,31 @@ public class TVPageController implements Initializable {
         user_vote_field.ratingProperty().addListener(new ChangeListener<Number>() { //action event
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                UserService.addTvsUserVote(getCurrentUser().getUsername(), t1.toString(), tv.getName());
+                if(UserService.checkIfShowIsInWatchlist(getCurrentUser().getUsername(), tv)) {
+                    UserService.addTvsUserVote(getCurrentUser().getUsername(), t1.toString(), tv.getName());
+                }
+                else{
+                    added_comm_message.setText("You must follow the show!");
+                    user_vote_field.setRating(0.0);
+                }
             }
         });
     }
 
-    public void addTvComment(){
-        UserService.addTvUserComment(getCurrentUser().getUsername(), tv.getName(), comment_field.getText());
-        added_comm_message.setText("Your comment was added!");
-        ArrayList<String> tvUserCommentsPerTv = UserService.getUsersCommentsPerTv(tv.getName());
-        String usersComments = "";
-        for(String s : tvUserCommentsPerTv){
-            usersComments = usersComments + s;
+    public void addTvComment() {
+        if (UserService.checkIfShowIsInWatchlist(getCurrentUser().getUsername(), tv)) {
+            UserService.addTvUserComment(getCurrentUser().getUsername(), tv.getName(), comment_field.getText());
+            added_comm_message.setText("Your comment was added!");
+            comment_field.setText("");
+            ArrayList<String> tvUserCommentsPerTv = UserService.getUsersCommentsPerTv(tv.getName());
+            String usersComments = "";
+            for (String s : tvUserCommentsPerTv) {
+                usersComments = usersComments + s;
+            }
+            users_comments_area.setText(usersComments);
         }
-        users_comments_area.setText(usersComments);
+        else{
+            added_comm_message.setText("You must follow the show!");
+        }
     }
 }

@@ -117,7 +117,7 @@ public class UserService {
     public static int checkMovieExists(String username, String moviename){
         for(User user : userRepository.find()){
             if(Objects.equals(username, user.getUsername())){
-                if(user.checkIfMovieExists(moviename) == 1)
+                if(user.checkIfMovieExists(moviename))
                     return 1;
             }
         }
@@ -127,7 +127,7 @@ public class UserService {
     public static int checkTvExists(String username, String tvname){
         for(User user : userRepository.find()){
             if(Objects.equals(username, user.getUsername())){
-                if(user.checkIfTvExists(tvname) == 1)
+                if(user.checkIfTvExists(tvname))
                     return 1;
             }
         }
@@ -191,7 +191,7 @@ public class UserService {
     public static ArrayList<String> getUsersCommentsPerMovie(String moviename) {
         ArrayList<String> movieComments = new ArrayList<String>();
         for (User user : userRepository.find()) {
-            if (user.checkIfMovieExists(moviename) == 1) {
+            if (user.checkIfMovieExists(moviename)) {
                 if (!user.getMovieComment(moviename).equals("")) {
                     if (user.getUsername().equals(getCurrentUser().getUsername())) {
                         movieComments.add("Your comment:\n" + user.getMovieComment(moviename) + "\n--------\n");
@@ -207,7 +207,7 @@ public class UserService {
     public static ArrayList<String> getUsersCommentsPerTv(String tvname){
         ArrayList<String> tvComments = new ArrayList<String>();
         for(User user : userRepository.find()) {
-            if (user.checkIfTvExists(tvname) == 1) {
+            if (user.checkIfTvExists(tvname)) {
                 if (!user.getTvComment(tvname).equals("")) {
                     if(user.getUsername().equals(getCurrentUser().getUsername())){
                         tvComments.add("Your comment:\n" + user.getTvComment(tvname) + "\n--------\n");

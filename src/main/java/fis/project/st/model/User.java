@@ -76,24 +76,24 @@ public class User {
         return watchlist;
     }
 
-    public int checkIfMovieExists(String moviename) {
+    public boolean checkIfMovieExists(String moviename) {
 
         for (String movie : movies) {
             if (movie.equals(moviename)) {
-                return 1;
+                return true;
             }
         }
-        return 0;
+        return false;
     }
 
-    public int checkIfTvExists(String tvname) {
+    public boolean checkIfTvExists(String tvname) {
 
         for (String tv : tvs) {
             if (tv.equals(tvname)) {
-                return 1;
+                return true;
             }
         }
-        return 0;
+        return false;
     }
 
     public void addMovieComment(String comm, String moviename) {
