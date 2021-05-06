@@ -58,7 +58,7 @@ public class MoviePageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         movie = (Movie) HomepageController.getSelectedShow();
         title.setText(movie.getName());
-        title.setWrappingWidth(600);
+        title.setWrappingWidth(400);
         overview.setText(movie.getOverview());
         overview.setWrappingWidth(600);
         Image image = new Image("https://image.tmdb.org/t/p/w500" + movie.getBackdrop_path());

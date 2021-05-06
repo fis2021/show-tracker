@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.HomepageController">
-   <children>
-      <fx:include source="navBar.fxml" />
-      <Text layoutX="60.0" layoutY="128.0" styleClass="h1" text="Movies" translateY="-20.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="9.0" layoutX="60.0" layoutY="132.0" styleClass="underline" translateY="-20.0" width="116.0" />
-      <ScrollPane layoutX="57.0" layoutY="148.0" prefHeight="255.0" prefWidth="1161.0" translateY="-20.0" vbarPolicy="NEVER" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="62.0">
-         <content>
-            <HBox fx:id="gridMovies" prefHeight="0.0" prefWidth="0.0" />
-         </content></ScrollPane>
-      <Text layoutX="60.0" layoutY="425.0" styleClass="h1" text="TV" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="9.0" layoutX="61.0" layoutY="429.0" styleClass="underline" width="44.0" />
-      <ScrollPane layoutX="57.0" layoutY="445.0" prefHeight="255.0" prefWidth="1161.0" vbarPolicy="NEVER" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="62.0">
-         <content>
-            <HBox fx:id="gridTV" prefHeight="0.0" prefWidth="3.0" />
-         </content></ScrollPane>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="720.0" prefWidth="1280.0" stylesheets="@homepage.css"
+            xmlns="http://javafx.com/javafx/16" fx:controller="fis.project.st.controllers.HomepageController">
+   <fx:include source="navBar.fxml"/>
+   <Text layoutX="60.0" layoutY="128.0" styleClass="h1" text="Movies" translateY="-20.0"/>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" height="9.0" layoutX="60.0" layoutY="132.0" styleClass="underline"
+              translateY="-20.0" width="116.0"/>
+   <ScrollPane layoutX="57.0" layoutY="148.0" prefHeight="255.0" prefWidth="1161.0" translateY="-20.0"
+               vbarPolicy="NEVER" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="62.0">
+      <content>
+         <HBox fx:id="gridMovies" prefHeight="0.0" prefWidth="0.0"/>
+      </content>
+   </ScrollPane>
+   <Text layoutX="60.0" layoutY="425.0" styleClass="h1" text="TV"/>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" height="9.0" layoutX="61.0" layoutY="429.0" styleClass="underline"
+              width="44.0"/>
+   <ScrollPane layoutX="57.0" layoutY="445.0" prefHeight="255.0" prefWidth="1161.0" vbarPolicy="NEVER"
+               AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="62.0">
+      <content>
+         <HBox fx:id="gridTV" prefHeight="0.0" prefWidth="3.0"/>
+      </content>
+   </ScrollPane>
 </AnchorPane>

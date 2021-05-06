@@ -106,4 +106,15 @@ public class NavBarController implements Initializable {
         window.setScene(homepageViewScene);
         window.show();
     }
+
+    @FXML
+    public void handleWatchnextScene(ActionEvent event) throws IOException {
+        Parent homepageViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("watchnextPage.fxml")));
+        Scene homepageViewScene = new Scene(homepageViewParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene(homepageViewScene);
+        window.show();
+    }
 }

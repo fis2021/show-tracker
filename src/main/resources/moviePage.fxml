@@ -26,13 +26,13 @@
             <Text styleClass="text" text="10" />
          </children>
       </VBox>
-      <HBox alignment="CENTER_LEFT" layoutX="471.0" layoutY="238.0" prefHeight="16.0" prefWidth="200.0">
+      <HBox alignment="CENTER_LEFT" layoutX="473.0" layoutY="259.0" prefHeight="16.0" prefWidth="200.0">
          <children>
             <Label styleClass="label" text="Release Date: " />
             <Text fx:id="release_date" styleClass="text" text="2020-03-12" textOrigin="CENTER" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="471.0" layoutY="260.0" prefHeight="20.0" prefWidth="250.0">
+      <HBox alignment="CENTER_LEFT" layoutX="473.0" layoutY="281.0" prefHeight="20.0" prefWidth="250.0">
          <children>
             <Label styleClass="label" text="Runtime: " />
             <Text fx:id="runtime" styleClass="text" textOrigin="CENTER" />

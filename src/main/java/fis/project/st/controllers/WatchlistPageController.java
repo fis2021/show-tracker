@@ -1,6 +1,6 @@
 package fis.project.st.controllers;
 
-import fis.project.st.model.Show;
+import fis.project.st.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,12 +23,26 @@ public class WatchlistPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clickListener = show -> HomepageController.setSelectedShow(HomepageController.getShow(show));
+        clickListener = new ClickListener() {
+            @Override
+            public void onClickListener(Show show) {
+                HomepageController.setSelectedShow(HomepageController.getShow(show));
+            }
+
+            @Override
+            public void onClickListener(TV tv) {
+            }
+
+            @Override
+            public void onClickListener(Movie movie) {
+            }
+        };
         int column = 1, row = 1;
         watchGrid.setVgap(10);
         watchGrid.setHgap(10);
         ArrayList<Show> shows;
         shows = UserService.getUserShowsAddedToWatchlist(getCurrentUser().getUsername()); //array of shows found on a search
+        assert shows != null;
         for (Show show : shows) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/showLayoutLabel.fxml"));

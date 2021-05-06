@@ -1,6 +1,6 @@
 package fis.project.st.controllers;
 
-import fis.project.st.model.Show;
+import fis.project.st.model.*;
 import fis.project.st.requests.requests;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,8 +31,21 @@ public class HomepageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clickListener = show -> {
-            selectedShow = getShow(show);
+        clickListener = new ClickListener() {
+            @Override
+            public void onClickListener(Show show) {
+                HomepageController.setSelectedShow(HomepageController.getShow(show));
+            }
+
+            @Override
+            public void onClickListener(TV tv) {
+
+            }
+
+            @Override
+            public void onClickListener(Movie movie) {
+
+            }
         };
         try {
             requests reqMovies = new requests();

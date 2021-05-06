@@ -21,7 +21,7 @@
     -fx-background-position: bottom;
 }
 
-.button {
+.btn {
     -fx-background-color: accent-color;
     -fx-alignment: center;
     -fx-background-radius: 8;
@@ -31,7 +31,7 @@
     -fx-pref-height: 40;
 }
 
-.button .text {
+.btn .text {
     -fx-effect: dropshadow(one-pass-box, rgba(12, 8, 11, 0.1), 1, 0, 1, 1);
     -fx-font-weight: bolder;
     -fx-font-family: Roboto, bold;
