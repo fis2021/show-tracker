@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
@@ -12,16 +13,19 @@
         <fx:include source="navBar.fxml" />
       <AnchorPane layoutX="-7.0" layoutY="78.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="7.0" layoutY="2.0" prefHeight="627.2" prefWidth="1280.0" styleClass=".scroll">
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="7.0" layoutY="2.0" prefHeight="627.2" prefWidth="1280.0">
                <content>
-                  <GridPane fx:id="searchGrid" alignment="CENTER">
+                  <GridPane fx:id="searchGrid" prefHeight="613.0" prefWidth="1280.0">
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
+                     <columnConstraints>
+                        <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
                   </GridPane>
                </content>
             </ScrollPane>
-            <Text fx:id="errorMsg" layoutX="499.0" layoutY="144.0" styleClass="search-error" textAlignment="CENTER"  />
+            <Text fx:id="errorMsg" layoutX="499.0" layoutY="144.0" styleClass="search-error" textAlignment="CENTER" />
          </children>
       </AnchorPane>
     </children>

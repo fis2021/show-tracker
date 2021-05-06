@@ -12,6 +12,7 @@
     darkest-color: #1B1A20;
     accent-color: #F6AE2D;
     second-accent-color: #00AFB5;
+    dark-accent-color: #211E25;
 }
 
 .root {
@@ -61,4 +62,34 @@
 
 .scroll {
     -fx-alignment: center;
+}
+
+.secBtn .text {
+    -fx-effect: dropshadow(one-pass-box, rgba(12, 8, 11, 0.1), 1, 0, 1, 1);
+    -fx-font-weight: bolder;
+    -fx-font-family: Roboto, bold;
+}
+
+.secBtn {
+    -fx-background-color: second-accent-color;
+    -fx-alignment: center;
+    -fx-background-radius: 8;
+    -fx-font: 13 Roboto, bold;
+    -fx-text-fill: lightest-color;
+    -fx-pref-width: 130;
+    -fx-pref-height: 30;
+}
+
+.field {
+    -fx-background-color: dark-accent-color;
+    -fx-text-fill: lightest-color;
+}
+
+.text-area .content {
+    -fx-background-color: dark-accent-color;
+    -fx-text-fill: lightest-color;
+}
+
+.field .text {
+    -fx-wrap-text: 230px;
 }

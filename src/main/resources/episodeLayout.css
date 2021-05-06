@@ -1,0 +1,29 @@
+@font-face {
+    src: url("./fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    src: url("./fonts/Roboto-Bold.ttf");
+}
+
+* {
+    lightest-color: #fff;
+    dark-accent-color: #211E25;
+    lighterdark-color: #ada7bc;
+    darkest-color: #1B1A20;
+    accent-color: #F6AE2D;
+    second-accent-color: #00AFB5;
+}
+
+.root {
+    -fx-background-color: dark-accent-color;
+}
+
+.text {
+    -fx-fill: lightest-color;
+    -fx-font-size: 14px;
+}
+
+.label .text {
+    -fx-fill: lighterdark-color;
+}

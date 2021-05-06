@@ -22,13 +22,15 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static fis.project.st.controllers.LoginController.getCurrentUser;
+import fis.project.st.services.UserService;
 
 public class NavBarController implements Initializable {
-    private static ArrayList<Show> foundShows;
     @FXML
     private Text username;
     @FXML
     private TextField searchField;
+
+    private static ArrayList<Show> foundShows;
 
     public static ArrayList<Show> getFoundShows() throws ShowNotFoundException {
         if (foundShows.size() == 0) throw new ShowNotFoundException();
@@ -69,11 +71,45 @@ public class NavBarController implements Initializable {
         requests req = new requests();
         String response = "";
         if (search.length() != 0) {
-            response = req.getData("/search/multi?query=" + search.replace(" ", "-").toLowerCase() + "&", 5);
+            response = req.getData("/search/multi?query=" + search.trim().replace(" ", "-").toLowerCase() + "&", "");
         }
+
         if (response.length() > 20)
             foundShows = req.getBaseData(response, "");
+
+        for (Show show : foundShows) {
+            if (show.getType().equals("movie")) {
+                if (UserService.checkMovieExists(getCurrentUser().getUsername(), show.getName()) == 0) {
+                    UserService.AddMovieToUser(getCurrentUser().getUsername(), show.getName());
+                }
+            } else {
+                if (UserService.checkTvExists(getCurrentUser().getUsername(), show.getName()) == 0) {
+                    UserService.AddTvToUser(getCurrentUser().getUsername(), show.getName());
+                }
+            }
+        }
         Parent homepageViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("searchPage.fxml")));
+        Scene homepageViewScene = new Scene(homepageViewParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene(homepageViewScene);
+    }
+
+    @FXML
+    public void handleWatchlistScene(ActionEvent event) throws IOException {
+        Parent homepageViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("watchlistPage.fxml")));
+        Scene homepageViewScene = new Scene(homepageViewParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene(homepageViewScene);
+        window.show();
+    }
+
+    @FXML
+    public void handleWatchnextScene(ActionEvent event) throws IOException {
+        Parent homepageViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("watchnextPage.fxml")));
         Scene homepageViewScene = new Scene(homepageViewParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -82,5 +118,3 @@ public class NavBarController implements Initializable {
         window.show();
     }
 }
-
-

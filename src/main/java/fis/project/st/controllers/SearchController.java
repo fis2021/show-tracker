@@ -1,7 +1,9 @@
 package fis.project.st.controllers;
 
 import fis.project.st.exceptions.ShowNotFoundException;
+import fis.project.st.model.Movie;
 import fis.project.st.model.Show;
+import fis.project.st.model.TV;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,17 +24,28 @@ public class SearchController implements Initializable {
     @FXML
     private Text errorMsg;
 
-    private ClickListener clickListener;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clickListener = show -> HomepageController.setSelectedShow(HomepageController.getShow(show));
-        int column = 0, row = 1;
+        ClickListener clickListener = new ClickListener() {
+            @Override
+            public void onClickListener(Show show) {
+                HomepageController.setSelectedShow(HomepageController.getShow(show));
+            }
+
+            @Override
+            public void onClickListener(TV tv) {
+            }
+
+            @Override
+            public void onClickListener(Movie movie) {
+            }
+        };
+        int column = 1, row = 1;
         searchGrid.setVgap(10);
         searchGrid.setHgap(10);
         ArrayList<Show> shows;
         try {
-            shows = NavBarController.getFoundShows();
+            shows = NavBarController.getFoundShows(); //array of shows found on a search
             for (Show show : shows) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/showLayout.fxml"));
@@ -43,7 +56,7 @@ public class SearchController implements Initializable {
                     e.printStackTrace();
                 }
 
-                if (column == 6) { column = 0; row++; }
+                if (column == 7) { column = 1; row++; }
 
                 ShowLayoutController showLayoutController = fxmlLoader.getController();
                 showLayoutController.setData(show, clickListener);

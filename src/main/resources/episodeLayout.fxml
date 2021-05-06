@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane onMousePressed="#click" prefHeight="100.0" prefWidth="400.0" stylesheets="@episodeLayout.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.EpisodeLayoutController">
+   <children>
+      <ImageView fx:id="backdrop" fitHeight="100.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" />
+      <Text layoutX="188.0" layoutY="19.0" styleClass="text" text="EPISODE" />
+      <Text fx:id="episode_title" layoutX="189.0" layoutY="39.0" styleClass="text" text="Waiting" />
+      <Text fx:id="name" layoutX="188.0" layoutY="58.0" styleClass="text" text="The Good Doctor" />
+      <HBox layoutX="189.0" layoutY="60.0">
+         <children>
+            <Label styleClass="label" text="Episode number: " />
+            <Text fx:id="episode_number" styleClass="text" text="13" textOrigin="CENTER" />
+         </children>
+      </HBox>
+      <HBox layoutX="189.0" layoutY="75.0">
+         <children>
+            <Label styleClass="label" text="Season number: " />
+            <Text fx:id="season_number" styleClass="text" text="4" textOrigin="CENTER" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

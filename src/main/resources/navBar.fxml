@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="navbar" stylesheets="@navBar.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.NavBarController">
+<AnchorPane stylesheets="@navBar.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.NavBarController">
     <children>
         <HBox alignment="CENTER" prefHeight="77.0" prefWidth="1280.0" styleClass="nav" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -38,8 +38,9 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="78.0" prefWidth="410.0">
                     <children>
-                        <Button layoutX="71.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleHomepageScene" text="Homepage" />
-                        <Button layoutX="248.0" layoutY="22.0" mnemonicParsing="false" text="Watchlist" />
+                        <Button layoutY="20.0" mnemonicParsing="false" onAction="#handleHomepageScene" text="Homepage" />
+                        <Button layoutX="127.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleWatchlistScene" text="Watchlist" />
+                  <Button layoutX="244.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleWatchnextScene" text="Watch next" />
                     </children>
                 </AnchorPane>
             </children>

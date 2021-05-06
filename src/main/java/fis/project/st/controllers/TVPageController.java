@@ -1,12 +1,15 @@
 package fis.project.st.controllers;
 
-import fis.project.st.model.Show;
 import fis.project.st.model.TV;
 import fis.project.st.model.TVUtil.Episode;
 import fis.project.st.model.TVUtil.Season;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -17,6 +20,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import fis.project.st.services.UserService;
+import static fis.project.st.controllers.LoginController.getCurrentUser;
+import org.controlsfx.control.Rating;
+
 
 public class TVPageController implements Initializable {
     @FXML
@@ -67,9 +74,23 @@ public class TVPageController implements Initializable {
     @FXML
     private ImageView episodeback;
 
+    @FXML
+    private Rating user_vote_field;
+
+    @FXML
+    private TextField comment_field;
+
+    @FXML
+    private TextArea users_comments_area;
+
+    @FXML
+    private Text added_comm_message;
+
+    private TV tv;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TV tv = (TV) HomepageController.getSelectedShow();
+        tv = (TV) HomepageController.getSelectedShow();
         title.setText(tv.getName());
         title.setWrappingWidth(600);
         overview.setText(tv.getOverview());
@@ -105,5 +126,47 @@ public class TVPageController implements Initializable {
         overviewEp.setText(episode.getOverview());
         image = new Image("https://image.tmdb.org/t/p/w500" + episode.getStill_path());
         episodeback.setImage(image);
+        //database rating
+        ArrayList<String> tvs = UserService.getTvs(getCurrentUser().getUsername());
+        int index = tvs.indexOf(tv.getName());
+        ArrayList<String> tvsRates = UserService.getTvsRates(getCurrentUser().getUsername());
+        user_vote_field.setRating(Double.parseDouble(tvsRates.get(index)));
+        //database comment
+        ArrayList<String> tvUserCommentsPerTv = UserService.getUsersCommentsPerTv(tv.getName());
+        String usersComments = "";
+        for(String s : tvUserCommentsPerTv){
+            usersComments = usersComments + s;
+        }
+        users_comments_area.setText(usersComments);
+
+        user_vote_field.ratingProperty().addListener(new ChangeListener<Number>() { //action event
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                if(UserService.checkIfShowIsInWatchlist(getCurrentUser().getUsername(), tv)) {
+                    UserService.addTvsUserVote(getCurrentUser().getUsername(), t1.toString(), tv.getName());
+                }
+                else{
+                    added_comm_message.setText("You must follow the show!");
+                    user_vote_field.setRating(0.0);
+                }
+            }
+        });
+    }
+
+    public void addTvComment() {
+        if (UserService.checkIfShowIsInWatchlist(getCurrentUser().getUsername(), tv)) {
+            UserService.addTvUserComment(getCurrentUser().getUsername(), tv.getName(), comment_field.getText());
+            added_comm_message.setText("Your comment was added!");
+            comment_field.setText("");
+            ArrayList<String> tvUserCommentsPerTv = UserService.getUsersCommentsPerTv(tv.getName());
+            String usersComments = "";
+            for (String s : tvUserCommentsPerTv) {
+                usersComments = usersComments + s;
+            }
+            users_comments_area.setText(usersComments);
+        }
+        else{
+            added_comm_message.setText("You must follow the show!");
+        }
     }
 }
