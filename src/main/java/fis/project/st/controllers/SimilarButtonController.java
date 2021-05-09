@@ -20,7 +20,7 @@ public class SimilarButtonController {
         } else {
             requests req = new requests();
             String responseBody = req.getData("/movie/" + HomepageController.getSelectedShow().getId() + "/similar?", "");
-            similarShows = req.getBaseData(responseBody, "movie");
+            similarShows = req.getBaseData(responseBody, "movies");
         }
     }
 }
