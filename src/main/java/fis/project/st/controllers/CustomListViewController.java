@@ -21,27 +21,26 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import fis.project.st.services.UserService;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.controlsfx.control.spreadsheet.Grid;
 
 import static fis.project.st.controllers.LoginController.getCurrentUser;
+import static fis.project.st.controllers.WatchlistPageController.getCustomListName;
 
-public class WatchlistPageController implements Initializable {
+public class CustomListViewController implements Initializable{
+
+    @FXML
+    private Text custom_list_name;
+
     @FXML
     private GridPane watchGrid;
 
-    @FXML
-    private ListView<String> listview;
-
     private ClickListener clickListener;
-
-    private static String customListName;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList<String> customListNames = UserService.getCustomListNames(getCurrentUser().getUsername());
-        for(String listname : customListNames){
-            listview.getItems().add(listname);
-        }
+        custom_list_name.setText("Welcome to " + getCustomListName());
         clickListener = new ClickListener() {
             @Override
             public void onClickListener(Show show) {
@@ -60,7 +59,7 @@ public class WatchlistPageController implements Initializable {
         watchGrid.setVgap(10);
         watchGrid.setHgap(10);
         ArrayList<Show> shows;
-        shows = UserService.getUserShowsAddedToWatchlist(getCurrentUser().getUsername());
+        shows = UserService.getUserCustomList(getCurrentUser().getUsername(), getCustomListName());
         assert shows != null;
         for (Show show : shows) {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -89,41 +88,5 @@ public class WatchlistPageController implements Initializable {
             watchGrid.setMaxHeight(Region.USE_PREF_SIZE);
             watchGrid.setMaxWidth(Region.USE_PREF_SIZE);
         }
-    }
-
-    public void handleCreateCustomList(ActionEvent event) throws IOException{
-        Parent registerViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("customListPage.fxml")));
-        Scene registerViewScene = new Scene(registerViewParent);
-
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        window.setScene(registerViewScene);
-        window.show();
-    }
-
-    public static void setCustomListName(String name){
-        customListName = name;
-    }
-
-    public static String getCustomListName() {
-        return customListName;
-    }
-
-    public void accesCustomList(ActionEvent event) throws IOException {
-        ObservableList<String> shows;
-        shows = listview.getSelectionModel().getSelectedItems();
-        String str = "";
-        for(String s : shows){
-            str = str + s;
-        }
-        //System.out.println(str);
-        setCustomListName(str);
-        Parent registerViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("customListView.fxml")));
-        Scene registerViewScene = new Scene(registerViewParent);
-
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        window.setScene(registerViewScene);
-        window.show();
     }
 }

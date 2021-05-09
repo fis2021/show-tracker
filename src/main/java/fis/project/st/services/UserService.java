@@ -262,7 +262,32 @@ public class UserService {
         }
     }
 
+    public static void addToUserACustomList(String username, String customlistname, Show show){
+        for(User user : userRepository.find()){
+            if(Objects.equals(user.getUsername(), username)){
+                user.addToCustomLists(customlistname, show);
+                userRepository.update(user);
+            }
+        }
+    }
 
+    public static ArrayList<String> getCustomListNames(String username){
+        for(User user : userRepository.find()){
+            if(Objects.equals(user.getUsername(), username)){
+                return user.getCustomListNames();
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<Show> getUserCustomList(String username, String customlistname){
+        for(User user : userRepository.find()){
+            if(Objects.equals(user.getUsername(), username)){
+                return user.getCustomList(customlistname);
+            }
+        }
+        return null;
+    }
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));

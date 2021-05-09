@@ -3,6 +3,7 @@ package fis.project.st.model;
 import org.dizitart.no2.objects.Id;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class User {
@@ -17,6 +18,7 @@ public class User {
     private ArrayList<String> movieComments;
     private ArrayList<String> tvComments;
     private ArrayList<Show> watchlist;
+    private HashMap<String, ArrayList<Show>> customLists;
 
     public User(String username, String password) {
         this.username = username;
@@ -45,9 +47,44 @@ public class User {
             tvComments.add("");
         }
         this.watchlist = new ArrayList<Show>();
+        this.customLists = new HashMap<String, ArrayList<Show>>();
     }
 
     public User() {
+    }
+
+    public boolean isShowDuplicateCustomList(ArrayList<Show> showlist, String showname){
+        for(Show show : showlist){
+            if(show.getName().equals(showname)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addToCustomLists(String customlistname, Show show){
+
+        if(customLists.containsKey(customlistname)) {
+            if(!isShowDuplicateCustomList(customLists.get(customlistname), show.getName())) {
+                customLists.get(customlistname).add(show);
+            }
+        }else{
+            ArrayList<Show> shows = new ArrayList<>();
+            shows.add(show);
+            customLists.put(customlistname, shows);
+        }
+    }
+
+    public ArrayList<String> getCustomListNames(){
+        ArrayList<String> names = new ArrayList<>();
+        for(String str : customLists.keySet()){
+            names.add(str);
+        }
+        return names;
+    }
+
+    public ArrayList<Show> getCustomList(String customlistname){
+        return customLists.get(customlistname);
     }
 
     public void addToWatchlist(Show show){
