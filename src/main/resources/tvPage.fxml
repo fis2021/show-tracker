@@ -101,14 +101,14 @@
                         <AnchorPane prefHeight="102.0" prefWidth="1015.0" />
                      </children>
                   </VBox>
-                  <Rating fx:id="user_vote_field" layoutX="991.0" layoutY="45.0" rating="0.0" translateX="1.0" translateY="-30.0" />
+                  <Rating fx:id="user_vote_field" layoutX="1021.0" layoutY="45.0" rating="0.0" translateX="1.0" translateY="-30.0" />
                   <Text fill="#867272" layoutX="1023.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overview" text="Your comment:" />
                   <TextField fx:id="comment_field" alignment="TOP_LEFT" layoutX="998.0" layoutY="197.0" prefHeight="46.0" prefWidth="234.0" styleClass="field" />
                   <Button layoutX="1097.0" layoutY="269.0" mnemonicParsing="false" onAction="#addTvComment" styleClass="secBtn" text="Add Comment" textFill="#7c3636" translateY="-5.0" />
                   <TextArea fx:id="users_comments_area" layoutX="998.0" layoutY="307.0" prefHeight="230.0" prefWidth="234.0" styleClass="field" />
                   <Text fx:id="added_comm_message" fill="WHITE" layoutX="1011.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" translateY="-30.0" />
-                <fx:include source="watchlistButton.fxml" translateX="1000.0" translateY="55.0" />
-                <fx:include source="similarButton.fxml" translateX="1000.0" translateY="110.0" />
+                <fx:include source="watchlistButton.fxml" translateX="1030.0" translateY="55.0" />
+                <fx:include source="similarButton.fxml" translateX="1030.0" translateY="110.0" />
                </children>
             </AnchorPane>
         </content>
