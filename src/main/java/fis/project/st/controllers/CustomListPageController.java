@@ -42,6 +42,8 @@ public class CustomListPageController{
     private ClickListener clickListener;
 
     public void giveToUserChoices() {
+
+        if(!UserService.isUserCustomListDuplicate(getCurrentUser().getUsername(), custom_list_name.getText())){
         if(!custom_list_name.getText().equals("")){
             customListName = custom_list_name.getText();
             bt1.setVisible(false);
@@ -95,6 +97,9 @@ public class CustomListPageController{
             }
         }else{
             message_field.setText("Please enter a valid name!");
+        }
+    }else{
+            message_field.setText("A custom list with this name already exists!");
         }
     }
 
