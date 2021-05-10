@@ -53,6 +53,14 @@ public class User {
     public User() {
     }
 
+    public boolean isCustomListDuplicate(String customlistname){
+
+        if(customLists.containsKey(customlistname)){
+            return true;
+        }
+        return false;
+    }
+
     public boolean isShowDuplicateCustomList(ArrayList<Show> showlist, String showname){
         for(Show show : showlist){
             if(show.getName().equals(showname)){
