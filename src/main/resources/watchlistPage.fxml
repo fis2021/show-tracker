@@ -23,9 +23,9 @@
          </GridPane>
      </content>
    </ScrollPane>
-   <Button layoutX="1076.0" layoutY="91.0" mnemonicParsing="false" onAction="#handleCreateCustomList" prefHeight="32.0" prefWidth="141.0" text="Create Custom List" />
+   <Button layoutX="984.0" layoutY="90.0" mnemonicParsing="false" onAction="#handleCreateCustomList" prefHeight="32.0" prefWidth="141.0" styleClass="btn" text="Create Custom List" />
    <Text layoutX="57.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="Watchlist" />
-   <Button layoutX="1121.0" layoutY="428.0" mnemonicParsing="false" onAction="#accesCustomList" text="View list" />
-   <Text fill="WHITE" layoutX="1104.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My custom lists:" />
-   <ListView fx:id="listview" layoutX="1055.0" layoutY="206.0" prefHeight="200.0" prefWidth="200.0" />
+   <Button layoutX="993.0" layoutY="428.0" mnemonicParsing="false" onAction="#accesCustomList" styleClass="secBtn" text="View list" />
+   <Text fill="WHITE" layoutX="937.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="My custom lists:" />
+   <ListView fx:id="listview" layoutX="927.0" layoutY="206.0" prefHeight="200.0" prefWidth="290.0" />
 </AnchorPane>

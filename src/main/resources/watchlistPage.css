@@ -19,6 +19,7 @@
     -fx-background-image: url("images/bg-wave.png");
     -fx-background-repeat: repeat-x;
     -fx-background-position: bottom;
+    -fx-focus-color: transparent;
 }
 
 .btn {
@@ -37,17 +38,52 @@
     -fx-font-family: Roboto, bold;
 }
 
+.secBtn {
+    -fx-alignment: center;
+    -fx-background-radius: 8;
+    -fx-font: 13 Roboto, bold;
+    -fx-text-fill: lightest-color;
+    -fx-pref-width: 170;
+    -fx-pref-height: 40;
+    -fx-background-color: second-accent-color;
+}
+
+.secBtn .text {
+    -fx-effect: dropshadow(one-pass-box, rgba(12, 8, 11, 0.1), 1, 0, 1, 1);
+    -fx-font-weight: bolder;
+    -fx-font-family: Roboto, bold;
+}
+
 .h1 {
     -fx-font-family: Roboto bold;
     -fx-font-size: 36px;
     -fx-fill: lightest-color;
 }
 
+.list-view {
+    -fx-padding: 1;
+    -fx-border-width: 0;
+}
+
+.list-view  .list-cell{
+    -fx-background-color: darkest-color;
+    -fx-border-color: darkest-color;
+    -fx-text-fill: lightest-color;
+    -fx-font-family: "Roboto Light";
+    -fx-alignment: center;
+    -fx-padding: 1;
+}
+
+
+.list-view  .list-cell:selected {
+    -fx-background-color: second-accent-color;
+}
+
 .scroll-pane {
     -fx-background-color: none;
     -fx-background: dark-accent-color;
     -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.4), 20, 0.0, 0, 5);
-    -fx-tile-alignment: center;
+    -fx-text-alignment: center;
 }
 
 .scroll-bar:horizontal .track,

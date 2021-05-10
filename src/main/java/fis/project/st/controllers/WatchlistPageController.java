@@ -5,14 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -21,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import fis.project.st.services.UserService;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import static fis.project.st.controllers.LoginController.getCurrentUser;
@@ -39,6 +38,8 @@ public class WatchlistPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ArrayList<String> customListNames = UserService.getCustomListNames(getCurrentUser().getUsername());
+        listview.setBackground(new Background(new BackgroundFill(Color.valueOf("#1B1A20"), null, null)));
+        listview.setPadding(new Insets(0));
         for(String listname : customListNames){
             listview.getItems().add(listname);
         }
@@ -116,7 +117,6 @@ public class WatchlistPageController implements Initializable {
         for(String s : shows){
             str = str + s;
         }
-        //System.out.println(str);
         setCustomListName(str);
         Parent registerViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("customListView.fxml")));
         Scene registerViewScene = new Scene(registerViewParent);

@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@watchlistPage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.CustomListViewController">
     <fx:include source="navBar.fxml" />
-    <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="136.0" prefHeight="584.0" prefWidth="872.0">
+    <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="136.0" prefHeight="584.0" prefWidth="1280.0">
         <content>
             <GridPane fx:id="watchGrid">
                 <rowConstraints>
