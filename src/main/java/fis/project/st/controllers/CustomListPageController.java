@@ -34,8 +34,6 @@ public class CustomListPageController{
     private Text message_field;
     @FXML
     private Button bt1;
-    @FXML
-    private Text clicked_show_message;
 
     private static String customListName;
 
@@ -43,8 +41,11 @@ public class CustomListPageController{
 
     public void giveToUserChoices() {
 
+        if(custom_list_name.getText().contains("(") || custom_list_name.getText().equals("")){
+            message_field.setText("Please enter a valid name!");
+        }else
+
         if(!UserService.isUserCustomListDuplicate(getCurrentUser().getUsername(), custom_list_name.getText())){
-        if(!custom_list_name.getText().equals("")){
             customListName = custom_list_name.getText();
             bt1.setVisible(false);
             message_field.setText("Please choose what shows you want to add: ");
@@ -95,12 +96,11 @@ public class CustomListPageController{
                 watchGrid.setMaxHeight(Region.USE_PREF_SIZE);
                 watchGrid.setMaxWidth(Region.USE_PREF_SIZE);
             }
-        }else{
-            message_field.setText("Please enter a valid name!");
         }
-    }else{
+    else{
             message_field.setText("A custom list with this name already exists!");
         }
+
     }
 
     public static String getCustomListName() {

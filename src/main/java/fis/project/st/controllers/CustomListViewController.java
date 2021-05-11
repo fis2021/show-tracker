@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -36,10 +37,30 @@ public class CustomListViewController implements Initializable{
     @FXML
     private GridPane watchGrid;
 
+    @FXML
+    private Button share_list_button;
+
+    @FXML
+    private TextField username_share;
+
+    @FXML
+    private Text typein_message;
+
+    @FXML
+    private Button submit_button;
+
+    @FXML
+    private Text action_message;
+
     private ClickListener clickListener;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        username_share.setVisible(false);
+        typein_message.setVisible(false);
+        submit_button.setVisible(false);
+
         custom_list_name.setText("Welcome to " + getCustomListName());
         clickListener = new ClickListener() {
             @Override
@@ -89,4 +110,30 @@ public class CustomListViewController implements Initializable{
             watchGrid.setMaxWidth(Region.USE_PREF_SIZE);
         }
     }
+
+    public void handleShareList(){
+        share_list_button.setVisible(false);
+        username_share.setVisible(true);
+        typein_message.setVisible(true);
+        submit_button.setVisible(true);
+    }
+
+    public void handleSubmitShare(){
+
+        if(username_share.getText().equals(getCurrentUser().getUsername())){
+            action_message.setText("You can not share a list with yourself!");
+        }else
+        if(username_share.getText().equals("")){
+            action_message.setText("Please enter a valid username!");
+        }else
+            if (!UserService.checkUserExists(username_share.getText())) {
+                action_message.setText("This user does not exists!");
+            }
+        else{
+            ArrayList<Show> currentCustomListShows = UserService.getUserCustomList(getCurrentUser().getUsername(), getCustomListName());
+            UserService.addToUserACustomList(username_share.getText(), getCustomListName(), currentCustomListShows, getCurrentUser().getUsername());
+            action_message.setText("Share complete!");
+            }
+    }
+
 }

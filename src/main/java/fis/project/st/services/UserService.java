@@ -262,10 +262,19 @@ public class UserService {
         }
     }
 
-    public static void addToUserACustomList(String username, String customlistname, Show show){
+    public static void addToUserCustomList(String username, String customlistname, Show show){
         for(User user : userRepository.find()){
             if(Objects.equals(user.getUsername(), username)){
                 user.addToCustomLists(customlistname, show);
+                userRepository.update(user);
+            }
+        }
+    }
+
+    public static void addToUserACustomList(String username, String customlistname, ArrayList<Show> shows, String fromusername){
+        for(User user : userRepository.find()){
+            if(Objects.equals(user.getUsername(), username)){
+                user.addACustomList(customlistname, shows, fromusername);
                 userRepository.update(user);
             }
         }
@@ -289,6 +298,8 @@ public class UserService {
         return null;
     }
 
+
+
     public static boolean isUserCustomListDuplicate(String username, String customlistname){
         for(User user : userRepository.find()){
             if(Objects.equals(user.getUsername(), username)){
@@ -299,6 +310,16 @@ public class UserService {
         }
         return false;
     }
+
+    public static boolean checkUserExists(String username){
+        for(User user : userRepository.find()){
+            if(Objects.equals(user.getUsername(), username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));

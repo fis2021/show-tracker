@@ -34,7 +34,7 @@ public class ShowLayoutLabelCustomListController {
     @FXML
     public void click(MouseEvent event) throws IOException {
         clickListener.onClickListener(show);
-        UserService.addToUserACustomList(getCurrentUser().getUsername(), getCustomListName(), show);
+        UserService.addToUserCustomList(getCurrentUser().getUsername(), getCustomListName(), show);
     }
 
     public void setData(Show show, ClickListener clickListener) {
