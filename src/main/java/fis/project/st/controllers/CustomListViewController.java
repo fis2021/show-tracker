@@ -119,7 +119,6 @@ public class CustomListViewController implements Initializable{
     }
 
     public void handleSubmitShare(){
-
         if(username_share.getText().equals(getCurrentUser().getUsername())){
             action_message.setText("You can not share a list with yourself!");
         }else
@@ -133,6 +132,18 @@ public class CustomListViewController implements Initializable{
             ArrayList<Show> currentCustomListShows = UserService.getUserCustomList(getCurrentUser().getUsername(), getCustomListName());
             UserService.addToUserACustomList(username_share.getText(), getCustomListName(), currentCustomListShows, getCurrentUser().getUsername());
             action_message.setText("Share complete!");
+            assert currentCustomListShows != null;
+            for (Show show : currentCustomListShows) {
+                if (show.getType().equals("movie")) {
+                    if (UserService.checkMovieExists(username_share.getText(), show.getName()) == 0) {
+                        UserService.AddMovieToUser(username_share.getText(), show.getName());
+                    }
+                } else {
+                    if (UserService.checkTvExists(username_share.getText(), show.getName()) == 0) {
+                        UserService.AddTvToUser(username_share.getText(), show.getName());
+                    }
+                }
+            }
             }
     }
 
