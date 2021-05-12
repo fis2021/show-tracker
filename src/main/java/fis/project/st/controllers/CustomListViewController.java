@@ -62,6 +62,7 @@ public class CustomListViewController implements Initializable{
         submit_button.setVisible(false);
 
         custom_list_name.setText("Welcome to " + getCustomListName());
+        custom_list_name.setWrappingWidth(700);
         clickListener = new ClickListener() {
             @Override
             public void onClickListener(Show show) {
