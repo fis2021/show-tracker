@@ -113,17 +113,21 @@ public class WatchlistPageController implements Initializable {
     public void accesCustomList(ActionEvent event) throws IOException {
         ObservableList<String> shows;
         shows = listview.getSelectionModel().getSelectedItems();
-        String str = "";
-        for(String s : shows){
-            str = str + s;
+        if (shows.isEmpty()) {
+
+        } else {
+            String str = "";
+            for (String s : shows) {
+                str = str + s;
+            }
+            setCustomListName(str);
+            Parent registerViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("customListView.fxml")));
+            Scene registerViewScene = new Scene(registerViewParent);
+
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            window.setScene(registerViewScene);
+            window.show();
         }
-        setCustomListName(str);
-        Parent registerViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("customListView.fxml")));
-        Scene registerViewScene = new Scene(registerViewParent);
-
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        window.setScene(registerViewScene);
-        window.show();
     }
 }

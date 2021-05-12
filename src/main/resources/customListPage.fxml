@@ -23,9 +23,9 @@
             </GridPane>
         </content>
     </ScrollPane>
-   <TextField fx:id="custom_list_name" layoutX="289.0" layoutY="70.0" />
-   <Text fill="#fcfcfc" layoutX="51.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the name of the custom list :" wrappingWidth="238.13671875" />
-   <Button fx:id="bt1" layoutX="459.0" layoutY="70.0" mnemonicParsing="false" onAction="#giveToUserChoices" prefHeight="25.0" prefWidth="101.0" text="Create" />
+   <TextField fx:id="custom_list_name" layoutX="280.0" layoutY="71.0" styleClass="field" />
+   <Text fill="#fcfcfc" layoutX="51.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the name of the custom list :" wrappingWidth="238.13671875" />
+   <Button fx:id="bt1" layoutX="495.0" layoutY="68.0" mnemonicParsing="false" onAction="#giveToUserChoices" prefHeight="25.0" prefWidth="70.0" styleClass="smallBtn" text="Create" />
    <Text fx:id="message_field" fill="WHITE" layoutX="51.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    <Text fx:id="clicked_show_message" fill="WHITE" layoutX="315.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" />
 </AnchorPane>

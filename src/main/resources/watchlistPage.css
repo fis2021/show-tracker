@@ -32,6 +32,16 @@
     -fx-pref-height: 40;
 }
 
+.smallBtn {
+    -fx-background-color: accent-color;
+    -fx-alignment: center;
+    -fx-background-radius: 8;
+    -fx-font: 13 Roboto, bold;
+    -fx-text-fill: lightest-color;
+    -fx-pref-width: 100;
+    -fx-pref-height: 30;
+}
+
 .btn .text {
     -fx-effect: dropshadow(one-pass-box, rgba(12, 8, 11, 0.1), 1, 0, 1, 1);
     -fx-font-weight: bolder;
@@ -45,6 +55,16 @@
     -fx-text-fill: lightest-color;
     -fx-pref-width: 170;
     -fx-pref-height: 40;
+    -fx-background-color: second-accent-color;
+}
+
+.smallSecBtn {
+    -fx-alignment: center;
+    -fx-background-radius: 8;
+    -fx-font: 13 Roboto, bold;
+    -fx-text-fill: lightest-color;
+    -fx-pref-width: 100;
+    -fx-pref-height: 30;
     -fx-background-color: second-accent-color;
 }
 
@@ -77,6 +97,14 @@
 
 .list-view  .list-cell:selected {
     -fx-background-color: second-accent-color;
+}
+
+.field {
+    -fx-background-radius: 20;
+    -fx-background-color: lightest-color;
+    -fx-alignment: center;
+    -fx-pref-height: 25;
+    -fx-pref-width: 200;
 }
 
 .scroll-pane {

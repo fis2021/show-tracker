@@ -2,6 +2,7 @@ package fis.project.st.model;
 
 import org.dizitart.no2.objects.Id;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -80,6 +81,17 @@ public class User {
             ArrayList<Show> shows = new ArrayList<>();
             shows.add(show);
             customLists.put(customlistname, shows);
+        }
+    }
+
+    public void addACustomList(String customlistname, ArrayList<Show> shows, String fromuser){
+
+        if(customlistname.contains("(")){
+            int index = customlistname.indexOf(" (");
+            String substring =customlistname.substring(0, index);
+            customLists.put(substring + " (Shared from " + fromuser  + ")", shows);
+        }else {
+            customLists.put(customlistname + " (Shared from " + fromuser + ")", shows);
         }
     }
 
