@@ -9,9 +9,11 @@ import fis.project.st.model.User;
 import fis.project.st.model.Show;
 import static fis.project.st.controllers.LoginController.getCurrentUser;
 
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Objects;
 
 import static fis.project.st.services.FileSystemService.getPathToFile;
@@ -19,16 +21,22 @@ import java.util.ArrayList;
 
 public class UserService {
 
+    public static Nitrite database;
     private static ObjectRepository<User> userRepository;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        FileSystemService.initDirectory();
+        database = Nitrite.builder()
                 .filePath(getPathToFile("show-tracker.db").toFile())
                 .openOrCreate("admin", "admin");
 
         userRepository = database.getRepository(User.class);
-
     }
+
+    public static List<User> getAllUsers(){
+        return userRepository.find().toList();
+    }
+
 
     public static void addUser(String username, String password, ArrayList<String> movies, ArrayList<String> tvs) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
@@ -320,7 +328,7 @@ public class UserService {
         return false;
     }
 
-    private static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 

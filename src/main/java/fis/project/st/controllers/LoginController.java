@@ -65,6 +65,7 @@ public class LoginController {
         return currentUser;
     }
 
-
-
+    public static void setCurrentUser(User currentUser) {
+        LoginController.currentUser = currentUser;
+    }
 }
