@@ -50,6 +50,7 @@ class UserServiceTest {
     @BeforeEach
     void setUp() throws IOException {
         FileSystemService.APPLICATION_FOLDER = ".test-show-tracker";
+        FileSystemService.initDirectory();
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
     }
