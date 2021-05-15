@@ -17,8 +17,8 @@
                 <AnchorPane prefHeight="78.0" prefWidth="459.0" HBox.hgrow="SOMETIMES">
                     <children>
                         <Text layoutX="183.0" layoutY="40.0" styleClass="text" text="Welcome, " textOrigin="CENTER" />
-                        <Text fx:id="username" layoutX="265.0" layoutY="40.0" styleClass="currentUsername" text="Prov" textOrigin="CENTER" />
-                        <Group layoutX="37.0" layoutY="16.0" onMousePressed="#handleHomepageSceneLogo" styleClass="logo">
+                        <Text id="currentUser" fx:id="username" layoutX="265.0" layoutY="40.0" styleClass="currentUsername" text="Prov" textOrigin="CENTER" />
+                        <Group id="logo" layoutX="37.0" layoutY="16.0" onMousePressed="#handleHomepageSceneLogo" styleClass="logo">
                             <children>
                                 <Text layoutX="-2.0" layoutY="27.0" styleClass="logo-title" text="Show Tracker" />
                                 <Rectangle arcHeight="5.0" arcWidth="5.0" height="7.0" layoutX="27.1953125" layoutY="32.4296875" styleClass="underline" width="67.0" />
@@ -28,8 +28,8 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="78.0" prefWidth="426.0">
                     <children>
-                        <TextField fx:id="searchField" layoutX="105.0" layoutY="25.0" promptText="Search" styleClass="search-field" />
-                  <FontAwesomeIconView glyphName="SEARCH" layoutX="318.0" layoutY="42.0" onMousePressed="#handleSearch" size="16" styleClass="search-icon">
+                        <TextField id="searchField" fx:id="searchField" layoutX="105.0" layoutY="25.0" promptText="Search" styleClass="search-field" />
+                  <FontAwesomeIconView id="searchBtn" glyphName="SEARCH" layoutX="318.0" layoutY="42.0" onMousePressed="#handleSearch" size="16" styleClass="search-icon">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -38,9 +38,9 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="78.0" prefWidth="410.0">
                     <children>
-                        <Button layoutY="20.0" mnemonicParsing="false" onAction="#handleHomepageScene" text="Homepage" />
-                        <Button layoutX="127.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleWatchlistScene" text="Watchlist" />
-                  <Button layoutX="244.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleWatchnextScene" text="Watch next" />
+                        <Button id="homepage" layoutY="20.0" mnemonicParsing="false" onAction="#handleHomepageScene" text="Homepage" />
+                        <Button id="watchlist" layoutX="127.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleWatchlistScene" text="Watchlist" />
+                        <Button id="watchNext" layoutX="244.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleWatchnextScene" text="Watch next" />
                     </children>
                 </AnchorPane>
             </children>

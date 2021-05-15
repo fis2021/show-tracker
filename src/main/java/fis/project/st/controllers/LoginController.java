@@ -39,7 +39,8 @@ public class LoginController {
             Scene homepageViewScene = new Scene(homepageViewParent);
 
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
+            window.setX(150);
+            window.setY(100);
             window.setScene(homepageViewScene);
             window.show();
         } catch (WrongPasswordException e) {

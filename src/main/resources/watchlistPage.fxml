@@ -13,7 +13,7 @@
     <fx:include source="navBar.fxml" />
    <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="136.0" prefHeight="584.0" prefWidth="872.0">
      <content>
-         <GridPane fx:id="watchGrid">
+         <GridPane id="watchGrid" fx:id="watchGrid">
            <rowConstraints>
              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
@@ -23,9 +23,9 @@
          </GridPane>
      </content>
    </ScrollPane>
-   <Button layoutX="984.0" layoutY="90.0" mnemonicParsing="false" onAction="#handleCreateCustomList" prefHeight="32.0" prefWidth="141.0" styleClass="btn" text="Create Custom List" />
+   <Button id="createCustomButton" layoutX="984.0" layoutY="90.0" mnemonicParsing="false" onAction="#handleCreateCustomList" prefHeight="32.0" prefWidth="141.0" styleClass="btn" text="Create Custom List" />
    <Text layoutX="57.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="Watchlist" />
-   <Button layoutX="993.0" layoutY="428.0" mnemonicParsing="false" onAction="#accesCustomList" styleClass="secBtn" text="View list" />
+   <Button id="viewListButton" layoutX="993.0" layoutY="428.0" mnemonicParsing="false" onAction="#accesCustomList" styleClass="secBtn" text="View list" />
    <Text fill="WHITE" layoutX="937.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="My custom lists:" />
-   <ListView fx:id="listview" layoutX="927.0" layoutY="206.0" prefHeight="200.0" prefWidth="290.0" />
+   <ListView id="listView" fx:id="listview" layoutX="927.0" layoutY="206.0" prefHeight="200.0" prefWidth="290.0" />
 </AnchorPane>

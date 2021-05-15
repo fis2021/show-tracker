@@ -13,7 +13,7 @@
     <fx:include source="navBar.fxml" />
     <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="136.0" prefHeight="584.0" prefWidth="1280.0">
         <content>
-            <GridPane fx:id="watchGrid">
+            <GridPane id="customListGrid" fx:id="watchGrid">
                 <rowConstraints>
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 </rowConstraints>
@@ -24,9 +24,9 @@
         </content>
     </ScrollPane>
     <Text fx:id="custom_list_name" layoutX="57.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" textOrigin="CENTER" />
-   <TextField fx:id="username_share" layoutX="908.0" layoutY="94.0" styleClass="field" />
+   <TextField id="shareUsername" fx:id="username_share" layoutX="908.0" layoutY="94.0" styleClass="field" />
    <Text fx:id="typein_message" fill="WHITE" layoutX="759.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the username:" wrappingWidth="149.0" />
-   <Button fx:id="submit_button" layoutX="1118.0" layoutY="91.0" mnemonicParsing="false" onAction="#handleSubmitShare" styleClass="smallSecBtn" text="Submit" />
-   <Text fx:id="action_message" fill="WHITE" layoutX="908.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="233.800048828125" />
-   <Button fx:id="share_list_button" layoutX="1118.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleShareList" styleClass="smallBtn" text="Share List" />
+   <Button id="submitButton" fx:id="submit_button" layoutX="1118.0" layoutY="91.0" mnemonicParsing="false" onAction="#handleSubmitShare" styleClass="smallSecBtn" text="Submit" />
+   <Text id="shareMessage" fx:id="action_message" fill="WHITE" layoutX="908.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="233.800048828125" />
+   <Button id="shareListButton" fx:id="share_list_button" layoutX="1118.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleShareList" styleClass="smallBtn" text="Share List" />
 </AnchorPane>

@@ -1,24 +1,23 @@
 package fis.project.st.controllers;
 
-import fis.project.st.exceptions.UsernameAlreadyExistsException;
 import fis.project.st.model.Movie;
+import fis.project.st.services.UserService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import org.controlsfx.control.Rating;
-import javafx.scene.control.TextField;
-import static fis.project.st.controllers.LoginController.getCurrentUser;
 
 import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-import fis.project.st.services.UserService;
+import static fis.project.st.controllers.LoginController.getCurrentUser;
 
 public class MoviePageController implements Initializable {
 
@@ -82,10 +81,9 @@ public class MoviePageController implements Initializable {
         user_vote_field.ratingProperty().addListener(new ChangeListener<Number>() { //action event
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                if(UserService.checkIfShowIsInWatchlist(getCurrentUser().getUsername(), movie)) {
+                if (UserService.checkIfShowIsInWatchlist(getCurrentUser().getUsername(), movie)) {
                     UserService.addMovieUserVote(getCurrentUser().getUsername(), t1.toString(), movie.getName());
-                }
-                else{
+                } else {
                     added_comm_message.setText("You must follow the show!");
                     user_vote_field.setRating(0.0);
                 }
