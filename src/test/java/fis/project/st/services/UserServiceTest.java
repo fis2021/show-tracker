@@ -112,6 +112,10 @@ class UserServiceTest {
     void testIfShowIsSavedInTheDatabase() throws UsernameAlreadyExistsException {
 
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
+        assertThat(UserService.getMovies(ADMIN)).isNotNull();
+        assertThat(UserService.getTvs(ADMIN)).isNotNull();
+        assertThat(UserService.getMovies(ADMIN)).size().isEqualTo(3);
+        assertThat(UserService.getTvs(ADMIN)).size().isEqualTo(3);
         assertThat(movies).isEqualTo(UserService.getMovies(ADMIN));
         assertThat(tvs).isEqualTo(UserService.getTvs(ADMIN));
     }
@@ -124,6 +128,9 @@ class UserServiceTest {
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
         UserService.addMovieUserVote(ADMIN, rate, movies.get(index));
         ArrayList<String> userVotes = UserService.getMoviesRates(ADMIN);
+        assertThat(userVotes).isNotNull();
+        assertThat(userVotes).isNotEmpty();
+        assertThat(userVotes.get(index)).isNotNull();
         assertThat(rate).isEqualTo(userVotes.get(index));
     }
 
@@ -135,6 +142,9 @@ class UserServiceTest {
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
         UserService.addTvsUserVote(ADMIN, rate, tvs.get(index));
         ArrayList<String> userVotes = UserService.getTvsRates(ADMIN);
+        assertThat(userVotes).isNotNull();
+        assertThat(userVotes).isNotEmpty();
+        assertThat(userVotes.get(index)).isNotNull();
         assertThat(rate).isEqualTo(userVotes.get(index));
     }
 
@@ -145,6 +155,8 @@ class UserServiceTest {
         String comm = "abc";
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
         UserService.addMovieUserComment(ADMIN, movies.get(index), comm);
+        assertThat(UserService.getMovieUserComments(ADMIN)).isNotEmpty();
+        assertThat(UserService.getMovieUserComments(ADMIN).get(index)).isNotNull();
         assertThat(comm).isEqualTo(UserService.getMovieUserComments(ADMIN).get(index));
     }
 
@@ -155,6 +167,8 @@ class UserServiceTest {
         String comm = "abc";
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
         UserService.addTvUserComment(ADMIN, tvs.get(index), comm);
+        assertThat(UserService.getTvUserComments(ADMIN)).isNotEmpty();
+        assertThat(UserService.getTvUserComments(ADMIN).get(index)).isNotNull();
         assertThat(comm).isEqualTo(UserService.getTvUserComments(ADMIN).get(index));
     }
 
@@ -175,6 +189,8 @@ class UserServiceTest {
         String movie = "movie";
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
         UserService.AddMovieToUser(ADMIN, movie);
+        assertThat(UserService.getMovies(ADMIN)).isNotEmpty();
+        assertThat(UserService.getMovies(ADMIN)).size().isEqualTo(4); // 3 at registration + 1
         assertThat(UserService.getMovies(ADMIN).contains(movie)).isEqualTo(true);
     }
 
@@ -184,6 +200,8 @@ class UserServiceTest {
         String tv = "tv";
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
         UserService.AddTvToUser(ADMIN, tv);
+        assertThat(UserService.getTvs(ADMIN)).isNotEmpty();
+        assertThat(UserService.getTvs(ADMIN)).size().isEqualTo(4); // 3 at registration + 1
         assertThat(UserService.getTvs(ADMIN).contains(tv)).isEqualTo(true);
     }
 
@@ -196,8 +214,12 @@ class UserServiceTest {
         LoginController.setCurrentUser(new User(ADMIN, ADMIN));
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
         UserService.addUser(ADMIN + "a", ADMIN, movies, tvs);
+        assertThat(movies.get(index)).isNotNull();
         UserService.addMovieUserComment(ADMIN, movies.get(index), comm);
         UserService.addMovieUserComment(ADMIN + "a", movies.get(index), comm1);
+        assertThat(UserService.getUsersCommentsPerMovie(movies.get(index)).get(0)).isNotNull();
+        assertThat(UserService.getUsersCommentsPerMovie(movies.get(index)).get(1)).isNotNull();
+        assertThat(UserService.getUsersCommentsPerMovie(movies.get(index))).size().isEqualTo(2);
         assertThat(UserService.getUsersCommentsPerMovie(movies.get(index)).get(0).contains(comm)).isEqualTo(true);
         assertThat(UserService.getUsersCommentsPerMovie(movies.get(index)).get(1).contains(comm1)).isEqualTo(true);
     }
@@ -211,8 +233,12 @@ class UserServiceTest {
         LoginController.setCurrentUser(new User(ADMIN, ADMIN));
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
         UserService.addUser(ADMIN + "a", ADMIN, movies, tvs);
+        assertThat(tvs.get(index)).isNotNull();
         UserService.addTvUserComment(ADMIN, tvs.get(index), comm);
         UserService.addTvUserComment(ADMIN + "a", tvs.get(index), comm1);
+        assertThat(UserService.getUsersCommentsPerTv(tvs.get(index)).get(0)).isNotNull();
+        assertThat(UserService.getUsersCommentsPerTv(tvs.get(index)).get(1)).isNotNull();
+        assertThat(UserService.getUsersCommentsPerTv(tvs.get(index))).size().isEqualTo(2);
         assertThat(UserService.getUsersCommentsPerTv(tvs.get(index)).get(0).contains(comm)).isEqualTo(true);
         assertThat(UserService.getUsersCommentsPerTv(tvs.get(index)).get(1).contains(comm1)).isEqualTo(true);
     }
@@ -232,6 +258,8 @@ class UserServiceTest {
         UserService.addShowToUserWatchlist(ADMIN, show);
         UserService.addShowToUserWatchlist(ADMIN, show1);
         ArrayList<Show> addedShows = UserService.getUserShowsAddedToWatchlist(ADMIN);
+        assertThat(addedShows).size().isNotNull();
+        assertThat(addedShows).size().isEqualTo(2);
         assertThat(addedShows.get(0).getName().contains(show.getName())).isEqualTo(true);
         assertThat(addedShows.get(1).getName().contains(show1.getName())).isEqualTo(true);
     }
@@ -251,6 +279,10 @@ class UserServiceTest {
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
         UserService.addToUserCustomList(ADMIN, listName, show);
         UserService.addToUserCustomList(ADMIN, listName, show1);
+        assertThat(UserService.getUserCustomList(ADMIN, listName)).isNotNull();
+        assertThat(UserService.getUserCustomList(ADMIN, listName).get(0)).isNotNull();
+        assertThat(UserService.getUserCustomList(ADMIN, listName).get(1)).isNotNull();
+        assertThat(UserService.getUserCustomList(ADMIN, listName)).size().isEqualTo(2);
         assertThat(UserService.getUserCustomList(ADMIN, listName).get(0).getName()).isEqualTo(show.getName());
         assertThat(UserService.getUserCustomList(ADMIN, listName).get(1).getName()).isEqualTo(show1.getName());
     }
@@ -261,6 +293,8 @@ class UserServiceTest {
         UserService.addUser(ADMIN, ADMIN, movies, tvs);
         UserService.addToUserCustomList(ADMIN, listName, show);
         UserService.addToUserCustomList(ADMIN, listName1, show);
+        assertThat(UserService.getCustomListNames(ADMIN)).isNotNull();
+        assertThat(UserService.getCustomListNames(ADMIN)).size().isEqualTo(2);
         assertThat(UserService.getCustomListNames(ADMIN)).contains(listName);
         assertThat(UserService.getCustomListNames(ADMIN)).contains(listName1);
     }
@@ -272,6 +306,7 @@ class UserServiceTest {
         UserService.addToUserCustomList(ADMIN, listName, show);
         UserService.addToUserCustomList(ADMIN, listName, show1);
         assertThat(UserService.isUserCustomListDuplicate(ADMIN, listName)).isEqualTo(true);
+        assertThat(UserService.getCustomListNames(ADMIN)).size().isEqualTo(1);
     }
 
     @Test
@@ -283,7 +318,8 @@ class UserServiceTest {
         shows.add(show);
         shows.add(show1);
         UserService.addToUserACustomList(ADMIN, listName, shows, fromUser);
+        assertThat(UserService.getCustomListNames(ADMIN).get(0)).isNotNull();
+        assertThat(UserService.getCustomListNames(ADMIN)).size().isEqualTo(1);
         assertThat(UserService.getCustomListNames(ADMIN).get(0)).contains(listName + " (Shared from " + fromUser + ")");
     }
-
 }
