@@ -34,6 +34,10 @@ public class Show {
 
     }
 
+    public Show(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

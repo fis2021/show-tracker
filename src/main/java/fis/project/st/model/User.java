@@ -113,7 +113,7 @@ public class User {
 
     public boolean isInWatchlist(Show givenshow){
         for(Show show : watchlist){
-            if(show.getName().equals(givenshow.getName())){     //default show.equals not working!
+            if(show.getName().equals(givenshow.getName())){
                 return true;
             }
         }
@@ -122,7 +122,7 @@ public class User {
 
     public void removeFromWatchlist(Show givenshow){
         for(Show show : watchlist){
-            if(show.getName().equals(givenshow.getName())){     //default show.equals not working!
+            if(show.getName().equals(givenshow.getName())){
                 watchlist.remove(show);
                 break;      //Avoiding ConcurrentModificationException
             }

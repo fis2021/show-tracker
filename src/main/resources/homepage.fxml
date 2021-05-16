@@ -15,7 +15,7 @@
    <ScrollPane layoutX="57.0" layoutY="148.0" prefHeight="255.0" prefWidth="1161.0" translateY="-20.0"
                vbarPolicy="NEVER" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="62.0">
       <content>
-         <HBox fx:id="gridMovies" prefHeight="0.0" prefWidth="0.0"/>
+         <HBox id="gridMovies" fx:id="gridMovies" prefHeight="0.0" prefWidth="0.0"/>
       </content>
    </ScrollPane>
    <Text layoutX="60.0" layoutY="425.0" styleClass="h1" text="TV"/>
@@ -24,7 +24,7 @@
    <ScrollPane layoutX="57.0" layoutY="445.0" prefHeight="255.0" prefWidth="1161.0" vbarPolicy="NEVER"
                AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="62.0">
       <content>
-         <HBox fx:id="gridTV" prefHeight="0.0" prefWidth="3.0"/>
+         <HBox id="gridTV" fx:id="gridTV" prefHeight="0.0" prefWidth="3.0"/>
       </content>
    </ScrollPane>
 </AnchorPane>

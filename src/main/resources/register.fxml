@@ -10,14 +10,14 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/16"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="fis.project.st.controllers.RegistrationController">
    <Text layoutX="186.0" layoutY="100.0" styleClass="logo-title" text="Show Tracker"/>
-   <TextField fx:id="usernameField" layoutX="200.0" layoutY="170.0" prefHeight="22.0" prefWidth="200.0"
+   <TextField fx:id="usernameField" id="username" layoutX="200.0" layoutY="170.0" prefHeight="22.0" prefWidth="200.0"
               promptText="Username"/>
-   <Button layoutX="250.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleRegisterAction" text="Register"/>
-   <PasswordField fx:id="passwordField" layoutX="200.0" layoutY="218.0" prefHeight="22.0" prefWidth="200.0"
+   <Button id="registerBtn" layoutX="250.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleRegisterAction" text="Register"/>
+   <PasswordField fx:id="passwordField" id="password" layoutX="200.0" layoutY="218.0" prefHeight="22.0" prefWidth="200.0"
                   promptText="Password"/>
-   <Text fx:id="registrationMessage" layoutX="199.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0"
+   <Text fx:id="registrationMessage" id="registrationMessage" layoutX="199.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0"
          styleClass="msg" wrappingWidth="202.13671875"/>
-   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeSceneLogin" text="Go back"/>
+   <Button id="loginSceneBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeSceneLogin" text="Go back"/>
    <Rectangle arcHeight="5.0" arcWidth="5.0" height="9.0" layoutX="290.0" layoutY="108.0" styleClass="underline"
               width="110.0"/>
 </AnchorPane>

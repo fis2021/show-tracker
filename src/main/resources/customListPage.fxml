@@ -13,7 +13,7 @@
     <fx:include source="navBar.fxml" />
     <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="136.0" prefHeight="584.0" prefWidth="1280.0">
         <content>
-            <GridPane fx:id="watchGrid" prefHeight="584.0" prefWidth="1280.0">
+            <GridPane id="watchCustomGrid" fx:id="watchGrid" prefHeight="584.0" prefWidth="1280.0">
                 <rowConstraints>
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 </rowConstraints>
@@ -23,9 +23,9 @@
             </GridPane>
         </content>
     </ScrollPane>
-   <TextField fx:id="custom_list_name" layoutX="280.0" layoutY="71.0" styleClass="field" />
+   <TextField id="customName" fx:id="custom_list_name" layoutX="280.0" layoutY="71.0" styleClass="field" />
    <Text fill="#fcfcfc" layoutX="51.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the name of the custom list :" wrappingWidth="238.13671875" />
-   <Button fx:id="bt1" layoutX="495.0" layoutY="68.0" mnemonicParsing="false" onAction="#giveToUserChoices" prefHeight="25.0" prefWidth="70.0" styleClass="smallBtn" text="Create" />
-   <Text fx:id="message_field" fill="WHITE" layoutX="51.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+   <Button id="customButton" fx:id="bt1" layoutX="495.0" layoutY="68.0" mnemonicParsing="false" onAction="#giveToUserChoices" prefHeight="25.0" prefWidth="70.0" styleClass="smallBtn" text="Create" />
+   <Text id="customMessage" fx:id="message_field" fill="WHITE" layoutX="51.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    <Text fx:id="clicked_show_message" fill="WHITE" layoutX="315.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" />
 </AnchorPane>

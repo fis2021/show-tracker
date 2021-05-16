@@ -39,14 +39,14 @@
             <Text styleClass="text" text=" minutes" />
          </children>
       </HBox>
-      <Rating fx:id="user_vote_field" layoutX="1026.0" layoutY="152.0" rating="0.0" />
-      <TextField fx:id="comment_field" alignment="TOP_LEFT" layoutX="101.0" layoutY="465.0" prefHeight="57.0" prefWidth="386.0" styleClass="field" />
+      <Rating id="vote" fx:id="user_vote_field" layoutX="1026.0" layoutY="152.0" rating="0.0" />
+      <TextField id="commentField" fx:id="comment_field" alignment="TOP_LEFT" layoutX="101.0" layoutY="465.0" prefHeight="57.0" prefWidth="386.0" styleClass="field" />
       <Text fill="WHITE" layoutX="101.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overview" text="Your comment:" wrappingWidth="141.662109375" />
-      <Button layoutX="360.0" layoutY="538.0" mnemonicParsing="false" onAction="#addComment" styleClass="secBtn" text="Add comment" textFill="#12b896" />
+      <Button id="addCommentBtn" layoutX="360.0" layoutY="538.0" mnemonicParsing="false" onAction="#addComment" styleClass="secBtn" text="Add comment" textFill="#12b896" />
       <TextArea fx:id="users_comments_area" layoutX="590.0" layoutY="465.0" prefHeight="200.0" prefWidth="324.0" styleClass="field" />
-      <Text fx:id="added_comm_message" fill="#fcfcfc" layoutX="107.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-        <fx:include source="watchlistButton.fxml" translateX="1030.0" translateY="200.0" />
-        <fx:include source="similarButton.fxml" translateX="1030.0" translateY="250.0" />
+      <Text id="commentMessage" fx:id="added_comm_message" fill="#fcfcfc" layoutX="107.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+        <fx:include id="watchlistButton" source="watchlistButton.fxml" translateX="1030.0" translateY="200.0" />
+        <fx:include id="similarButton" source="similarButton.fxml" translateX="1030.0" translateY="250.0" />
     </children>
    <stylesheets>
       <URL value="@homepage.css" />

@@ -15,7 +15,7 @@
          <children>
             <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="7.0" layoutY="2.0" prefHeight="627.2" prefWidth="1280.0">
                <content>
-                  <GridPane fx:id="searchGrid" prefHeight="613.0" prefWidth="1280.0">
+                  <GridPane id="searchGrid" fx:id="searchGrid" prefHeight="613.0" prefWidth="1280.0">
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
@@ -25,7 +25,7 @@
                   </GridPane>
                </content>
             </ScrollPane>
-            <Text fx:id="errorMsg" layoutX="499.0" layoutY="144.0" styleClass="search-error" textAlignment="CENTER" />
+            <Text id="searchMessage" fx:id="errorMsg" layoutX="499.0" layoutY="144.0" styleClass="search-error" textAlignment="CENTER" />
          </children>
       </AnchorPane>
     </children>
